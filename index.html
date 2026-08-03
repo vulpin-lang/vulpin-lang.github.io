@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Vulpin programming lang</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+  <style>
+    .bg-orange { background-color: orange; }
+    .bg-torange { background-color: rgb(255, 188, 63); }
+    
+    body { padding-top: 100px; }
+
+    .navbar-logo {
+      height: 32px;       /* Small default size */
+      width: auto;
+      max-height: 32px;   /* Prevents any overflow */
+      object-fit: contain;
+      transition: all 0.4s ease; /* Smooth resize on scroll */
+    }
+
+    /* Even smaller when scrolled */
+    .navbar-scrolled .navbar-logo {
+      height: 24px !important;
+      max-height: 24px !important;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav id="mainNavbar" class="navbar navbar-expand-sm fixed-top transition-all" 
+     style="background: transparent; padding: 1.5rem 0; transition: all 0.4s ease;">
+  <div class="container-fluid px-4">
+    <a class="navbar-brand fw-bold d-flex align-items-center" href="#" id="navBrand">
+      <img src="logo.png" alt="Vulpin" class="navbar-logo me-2">
+      <span class="align-middle">Vulpin</span>
+    </a>
+
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item mx-1">
+          <a class="nav-link text-dark px-3 py-2 rounded-pill" href="docs.html">
+            <i class="bi bi-book me-1"></i>Docs
+          </a>
+        </li>
+        <li class="nav-item mx-1">
+          <a class="nav-link text-dark px-3 py-2 rounded-pill" href="download.html">
+            <i class="bi bi-download me-1"></i>Download
+          </a>
+        </li>
+        <li class="nav-item mx-1">
+          <a class="nav-link text-dark px-3 py-2 rounded-pill" href="community.html">
+            <i class="bi bi-people me-1"></i>Community
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- Hero Section -->
+<div class="container-fluid p-5 text-center position-relative overflow-hidden" 
+     style="background: linear-gradient(135deg, #ff8c00, #ffa500); margin-top: 2rem; min-height: 60vh; display: flex; align-items: center; justify-content: center;">
+  
+  <!-- A subtle pattern or overlay to help text pop -->
+  <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0,0,0,0.05); z-index: 0;"></div>
+
+  <div class="position-relative z-1">
+    <!-- Badge for context -->
+    <span class="badge bg-light text-warning mb-3 px-3 py-2 rounded-pill shadow-sm">
+      V x0.9 comming soon!
+    </span>
+
+    <!-- Main Title with Shadow for readability -->
+    <h1 class="display-3 fw-bold mb-3 text-white" style="text-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+      Vulpin
+    </h1>
+
+    <!-- Subtitle with better contrast -->
+    <p class="lead text-white mb-4 fw-medium" style="max-width: 600px; margin: 0 auto; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+      Build your smallest possible programs today. Fast, efficient, and open-source.
+    </p>
+
+    <!-- Buttons with spacing -->
+    <div class="d-flex justify-content-center gap-3">
+      <a href="getstarted.html" class="btn btn-light btn-lg px-4 text-decoration-none shadow-lg fw-bold text-warning">
+        Get Started
+      </a>
+      <a href="https://github.com/vulpin-lang/vulpin" class="btn btn-outline-light btn-lg px-4 text-decoration-none">
+        <i class="bi bi-github me-2"></i>GitHub
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Features Section -->
+<div class="container mt-5 py-5">
+  <div class="row g-4">
+    <div class="col-sm-4">
+      <div class="card h-100 border-0 shadow-sm">
+        <div class="card-body text-center p-4">
+          <div class="mb-3"><i class="bi bi-lightning-charge-fill text-warning" style="font-size: 2.5rem;"></i></div>
+          <h3 class="h4 fw-bold">Fast</h3>
+          <p class="text-muted">Build, run, and compile your programs with blazing speed.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card h-100 border-0 shadow-sm">
+        <div class="card-body text-center p-4">
+          <div class="mb-3"><i class="bi bi-box-arrow-in-down-left text-warning" style="font-size: 2.5rem;"></i></div>
+          <h3 class="h4 fw-bold">Smallest Size</h3>
+          <p class="text-muted">Build your smallest possible programs with ease.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card h-100 border-0 shadow-sm">
+        <div class="card-body text-center p-4">
+          <div class="mb-3"><i class="bi bi-laptop text-warning" style="font-size: 2.5rem;"></i></div>
+          <h3 class="h4 fw-bold">Any OS</h3>
+          <p class="text-muted">Vulpin runs on any operating system!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Open Source Section -->
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <!-- Card with Gradient Background -->
+      <div class="card border-0 shadow-lg overflow-hidden" style="background: linear-gradient(135deg, #ff8c00, #ffa500);">
+        <div class="card-body text-center p-5 position-relative">
+          
+          <!-- Optional: Subtle overlay for texture -->
+          <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(255,255,255,0.1); z-index: 0;"></div>
+
+          <div class="position-relative z-1">
+            <!-- Icon/Badge -->
+            <div class="mb-4">
+              <span class="badge bg-light text-warning px-3 py-2 rounded-pill shadow-sm">
+                v1.0 Released
+              </span>
+            </div>
+
+            <!-- Title with Shadow for Readability -->
+            <h1 class="display-4 fw-bold text-white mb-3" style="text-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+              Vulpin
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="lead text-white mb-4 fw-medium" style="max-width: 600px; margin: 0 auto; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+              Build your smallest possible programs today. Fast, efficient, and open-source.
+            </p>
+
+            <!-- Buttons -->
+            <div class="d-flex justify-content-center gap-3">
+              <a href="getstarted.html" class="btn btn-light btn-lg px-4 text-decoration-none shadow-sm fw-bold text-warning">
+                Get Started
+              </a>
+              <a href="https://github.com/vulpin-lang/vulpin" class="btn btn-outline-light btn-lg px-4 text-decoration-none">
+                <i class="bi bi-github me-2"></i>GitHub
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container mt-5 py-5">
+  <div class="row g-4">
+    <div class="col-sm">
+      <div class="card h-100 border-0 shadow-sm">
+        <div class="card-body text-center p-4">
+          <h3 class="h4 fw-bold">Sponsers</h3>
+          <!--<div class="mb-3"><i class="bi bi-database text-warning" style="font-size: 2.5rem;"></i>cake</div>-->
+          <img src="fluxcast.png" alt="Vulpin" class="navbar-logo me-2">
+        </div>
+        </div>
+        </div>
+<!-- Scroll test content -->
+
+
+
+<p class="text-center">2026 CopyRight by ilunonix All Right Reversed.</p>
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script> 
+
+<script>
+window.addEventListener('scroll', function() {
+  const navbar = document.getElementById('mainNavbar');
+  const brandText = document.querySelector('#navBrand span');
+  
+  if (window.scrollY > 50) {
+    navbar.style.background = 'linear-gradient(135deg, #ff8c00, #ffa500)';
+    navbar.style.padding = '0.5rem 0';
+    navbar.style.margin = '0.5rem auto';
+    navbar.style.width = '90%';
+    navbar.style.maxWidth = '1200px';
+    navbar.style.borderRadius = '15px';
+    navbar.style.boxShadow = '0 4px 15px rgba(255, 140, 0, 0.3)';
+    navbar.classList.add('navbar-scrolled'); // Triggers smaller logo via CSS
+    
+    if(brandText) { brandText.classList.add('text-white'); brandText.classList.remove('text-dark'); }
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.classList.remove('text-dark'); link.classList.add('text-white');
+      link.style.background = 'rgba(255, 255, 255, 0.1)';
+    });
+    document.querySelector('.navbar-toggler-icon').style.filter = 'invert(1)';
+  } else {
+    navbar.style.background = 'transparent';
+    navbar.style.padding = '1.5rem 0';
+    navbar.style.margin = '0';
+    navbar.style.width = '100%';
+    navbar.style.maxWidth = '100%';
+    navbar.style.borderRadius = '0';
+    navbar.style.boxShadow = 'none';
+    navbar.classList.remove('navbar-scrolled'); // Restores normal logo size
+    
+    if(brandText) { brandText.classList.remove('text-white'); brandText.classList.add('text-dark'); }
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.classList.remove('text-white'); link.classList.add('text-dark');
+      link.style.background = 'transparent';
+    });
+    document.querySelector('.navbar-toggler-icon').style.filter = 'invert(0)';
+  }
+});
+</script>
+
+</body>
+</html>
