@@ -1,17 +1,17 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vulpin — the smallest possible programs</title>
+  <title>Vulpin â€” the smallest possible programs</title>
   <meta name="description" content="Vulpin is a scripting language built on C, designed to write the smallest possible programs. One-character commands. A .vul file. Ship it fast.">
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="fox.svg" type="image/svg+xml">
+  <link rel="icon" href="logo.png" type="image/png">
 </head>
 <body>
 
   <nav class="navbar">
-    <a class="brand" href="index.html"><img src="fox.svg" alt="">Vulpin</a>
+    <a class="brand" href="index.html"><img src="logo.png" alt="">Vulpin</a>
     <div class="navlinks">
       <a href="docs.html">Docs</a>
       <a href="getstarted.html">Get Started</a>
@@ -23,7 +23,7 @@
   <header>
     <div class="hero">
       <div class="hero-text">
-        <span class="stamp"><span class="dot"></span> v0.9 — the size of a heartbeat</span>
+        <span class="stamp"><span class="dot"></span> v0.9 â€” the size of a heartbeat</span>
         <h1>One char.<br>Whole <span class="dotdot">programs.</span></h1>
         <p class="lead">Vulpin is a scripting language that runs <b>on top of C</b>. Every command is a single character, built to write the <b>smallest possible programs</b> you've ever shipped.</p>
         <div class="cta">
@@ -32,7 +32,7 @@
         </div>
       </div>
       <div class="fox-card">
-        <img src="fox.svg" alt="The Vulpin fox mascot">
+        <img src="logo.png" alt="The Vulpin fox mascot">
         <div class="fox-name">the famished fox</div>
         <div class="fox-sub">small programs. big appetite.</div>
         <div class="plate">v0.9-stable</div>
@@ -56,7 +56,7 @@
         <div class="card">
           <div class="keycap">F</div>
           <h3>Fast on C</h3>
-          <p>Built <b>on top of C</b> — so programs stay quick and the runtime stays quiet while you code.</p>
+          <p>Built <b>on top of C</b> â€” so programs stay quick and the runtime stays quiet while you code.</p>
         </div>
         <div class="card">
           <div class="keycap">A</div>
@@ -74,18 +74,30 @@
     <section id="demo">
       <div class="sec-head">
         <h2>See how small gets loud</h2>
-        <p>A whole first program. Every command, every string.</p>
+        <p>Every command runs right here in your browser. Type, poke a sample, hit Run.</p>
       </div>
       <div class="term">
         <div class="term-bar">
           <span class="led r"></span><span class="led y"></span><span class="led g"></span>
-          <span class="term-title">hello.vul — 18 bytes</span>
+          <span class="term-title">vulpin — in-browser playground</span>
         </div>
-        <div class="screen">
-          <pre><span class="tk-c">G</span> <span class="tk-s">"Hello World!"</span>
-
-$ vulpin hello.vul
-Hello World!<span class="caret"></span></pre>
+        <div class="demo-wrap">
+          <div class="demo-side">
+            <label class="demo-label">your .vul program</label>
+            <textarea class="demo-editor" id="demoSrc" spellcheck="false" aria-label="Vulpin program editor"></textarea>
+            <div class="demo-bar">
+              <button class="btn" id="demoRun">Run ▸</button>
+              <span class="demo-ok" id="demoStatus">ready</span>
+            </div>
+            <div class="demo-samples" id="demoSamples" aria-label="sample programs"></div>
+            <div class="demo-ins">
+              <b>how this works</b>
+              <p>The first character of a line is the command; everything after it is the argument. <span class="tk-c">G"Hi"</span> prints with a newline, <span class="tk-c">g"Hi"</span> prints without one. Read a full cheat-sheet on the <a href="docs.html">docs page</a>.</p>
+            </div>
+          </div>
+          <div class="screen demo-out" id="demoOut" role="log" aria-live="polite">
+            <pre><span class="tk-s">vulpin v0.9 — every command, live</span></pre>
+          </div>
         </div>
       </div>
     </section>
@@ -96,7 +108,7 @@ Hello World!<span class="caret"></span></pre>
         <p>No mystery meat. Read it, fork it, break it, fix it.</p>
       </div>
       <div class="community-card" style="max-width:560px">
-        <div class="talk"><img src="fox.svg" alt="" style="width:38px;height:38px"></div>
+        <div class="talk"><img src="logo.png" alt="" style="width:38px;height:38px"></div>
         <h2>One tiny command away</h2>
         <p>Already on the toolchain? Bring it into any project.</p>
         <a class="btn green" href="download.html">Get the interpreter</a>
@@ -121,8 +133,9 @@ Hello World!<span class="caret"></span></pre>
 
   <footer>
     <div>made by ilunonix, chipped by the vulpin community</div>
-    <div class="copyright">© 2026 vulpin-lang · released under the MIT license</div>
+    <div class="copyright">Â© 2026 vulpin-lang Â· released under the MIT license</div>
   </footer>
 
+  <script type="module" src="demo.js"></script>
 </body>
 </html>
