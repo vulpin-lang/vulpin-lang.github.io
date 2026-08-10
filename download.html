@@ -1,140 +1,90 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-  <title>Vulpin programming lang</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Bootstrap Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-
-  <style>
-    .bg-orange { background-color: orange; }
-    .bg-torange { background-color: rgb(255, 188, 63); }
-    
-    body { padding-top: 100px; }
-    .navbar-logo {
-      height: 32px;       /* Small default size */
-      width: auto;
-      max-height: 32px;   /* Prevents any overflow */
-      object-fit: contain;
-      transition: all 0.4s ease; /* Smooth resize on scroll */
-    }
-
-    /* Even smaller when scrolled */
-    .navbar-scrolled .navbar-logo {
-      height: 24px !important;
-      max-height: 24px !important;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download — Vulpin</title>
+  <meta name="description" content="Download and install the Vulpin interpreter for Windows, macOS or Linux, or grab it from PyPI with pip.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="fox.svg" type="image/svg+xml">
 </head>
 <body>
-<!-- Navbar -->
-<nav id="mainNavbar" class="navbar navbar-expand-sm fixed-top transition-all" 
-     style="background: transparent; padding: 1.5rem 0; transition: all 0.4s ease;">
-  <div class="container-fluid px-4">
-    <a class="navbar-brand fw-bold d-flex align-items-center" href="#" id="navBrand">
-      <img src="logo.png" alt="Vulpin" class="navbar-logo me-2">
-      <span class="align-middle">Vulpin</span>
-    </a>
 
-    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item mx-1">
-          <a class="nav-link text-dark px-3 py-2 rounded-pill" href="docs.html">
-            <i class="bi bi-book me-1"></i>Docs
-          </a>
-        </li>
-        <li class="nav-item mx-1">
-          <a class="nav-link text-dark px-3 py-2 rounded-pill" href="download.html">
-            <i class="bi bi-download me-1"></i>Download
-          </a>
-        </li>
-        <li class="nav-item mx-1">
-          <a class="nav-link text-dark px-3 py-2 rounded-pill" href="community.html">
-            <i class="bi bi-people me-1"></i>Community
-          </a>
-        </li>
-      </ul>
+  <nav class="navbar">
+    <a class="brand" href="index.html"><img src="fox.svg" alt="">Vulpin</a>
+    <div class="navlinks">
+      <a href="docs.html">Docs</a>
+      <a href="getstarted.html">Get Started</a>
+      <a class="on" href="download.html">Download</a>
+      <a href="community.html">Community</a>
     </div>
-  </div>
-</nav>
-<div class="container-fluid p-5 text-center position-relative overflow-hidden" 
-     style="background: linear-gradient(135deg, #ff8c00, #ffa500); margin-top: 2rem; min-height: 35vh; display: flex; align-items: center; justify-content: center;">
-  
-  <!-- A subtle pattern or overlay to help text pop -->
-  <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0,0,0,0.05); z-index: 0;"></div>
+  </nav>
 
-  <div class="position-relative z-1">
+  <main>
 
-    <!-- Main Title with Shadow for readability -->
-    <h1 class="display-3 fw-bold mb-3 text-white" style="text-shadow: 0 4px 10px rgba(0,0,0,0.2);">
-      Vulpin
-    </h1>
+    <section>
+      <div class="sec-head">
+        <h2>Grab the runtime</h2>
+        <p>Pick a slot, install it, and get to one-character coding.</p>
+      </div>
 
-    <!-- Subtitle with better contrast -->
-    <p class="lead text-white mb-4 fw-medium" style="max-width: 600px; margin: 0 auto; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-      Download Section!
-    </p>
-    <p class="lead text-white mb-4 fw-medium" style="max-width: 600px; margin: 0 auto; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-    <i class="bi bi-windows me-2"></i><i class="bi bi-apple me-2"></i><i class="bi bi-ubuntu me-2"></i><i class="bi bi-android me-2"></i>
-    </p>
-</div>
-</div>
+      <div>
+        <div class="slot">
+          <div class="tag">Windows</div>
+          <div class="about"><b>Windows Installer</b><span>v0.9 — gobble every setup you already have</span></div>
+          <a class="go" href="#">Download .exe</a>
+        </div>
+        <div class="slot">
+          <div class="tag">macOS</div>
+          <div class="about"><b>macOS Installer</b><span>v0.9 — for Apple silicon and Intel</span></div>
+          <a class="go" href="#">Download .pkg</a>
+        </div>
+        <div class="slot">
+          <div class="tag">Linux</div>
+          <div class="about"><b>Linux Installer</b><span>v0.9 — deb, rpm and tarball inside</span></div>
+          <a class="go" href="#">Download .run</a>
+        </div>
+        <div class="slot">
+          <div class="tag">PyPI</div>
+          <div class="about"><b>pip install vulpin</b><span>the only command your terminal needs</span></div>
+          <a class="go" href="#">Copy command ↓</a>
+        </div>
+      </div>
 
+      <div class="status">
+        <div class="lamp on">
+          <div class="bulb"></div>
+          <b>Current · 0.8</b>
+          <span>stable, tested, shipped</span>
+        </div>
+        <div class="lamp soon">
+          <div class="bulb"></div>
+          <b>Next · 0.9</b>
+          <span>on the wheel</span>
+        </div>
+        <div class="lamp on">
+          <div class="bulb"></div>
+          <b>Installer</b>
+          <span>one-file setup</span>
+        </div>
+        <div class="lamp off">
+          <div class="bulb"></div>
+          <b>Changelog</b>
+          <span>in the repo, under releases</span>
+        </div>
+      </div>
 
+      <div style="text-align:center;margin-top:34px">
+        <a class="btn green" href="getstarted.html">Installed? Get started</a>
+      </div>
+    </section>
 
+  </main>
 
-<div class="container mt-5 p-0">
-  <a href="https://github.com/vulpin-lang/Vulpin/releases/tag/V0.8beta" 
-     class="text-black fw-bold text-decoration-none d-flex align-items-center gap-2"
-     target="_blank" 
-     rel="noopener noreferrer">
-    <i class="bi bi-diamond-half"></i><i class="bi bi-download"></i>
-    Source - 0.8 Beta</a>
-</div>
+  <footer>
+    <div>made by ilunonix, chipped by the vulpin community</div>
+    <div class="copyright">© 2026 vulpin-lang · released under the MIT license</div>
+  </footer>
 
-
-
-<div class="container mt-3 p-0">
-  <a href="https://github.com/vulpin-lang/Vulpin/releases/tag/V0.7.5" 
-     class="text-black fw-bold text-decoration-none d-flex align-items-center gap-2"
-     target="_blank" 
-     rel="noopener noreferrer">
-    <i class="bi bi-diamond-half"></i><i class="bi bi-download"></i>Source - 0.7.5 Beta</a>
-</div>
-
-
-
-
-<div class="container mt-3 p-0">
-  <a href="https://github.com/vulpin-lang/Vulpin/releases/tag/V0.6" 
-     class="text-black fw-bold text-decoration-none d-flex align-items-center gap-2"
-     target="_blank" 
-     rel="noopener noreferrer">
-    <i class="bi bi-diamond-half"></i><i class="bi bi-download"></i>
-    Source - 0.6</a>
-</div>
-
-
-
-
-<div class="container mt-4">
-  <h3>Version Tag Status</h3>
-  
-  <div class="mb-3">
-  <h5 class="mt-4">Detailed Breakdown</h5>
-  <div class="progress mb-2" style="height: 30px;">
-    <div class="progress-bar bg-success" style="width: 45%" title="v1.0 - v1.5">V0.6 - V0.7.5 - V0.8 beta</div>
-    <div class="progress-bar bg-warning" style="width: 25%" title="v2.0 - v2.3">V0.5</div>
-    <div class="progress-bar bg-danger" style="width: 30%" title="v0.x">Other's</div>
-  </div>
-</div>
 </body>
+</html>
