@@ -1,0 +1,12 @@
+{
+    "packages": [
+        {
+            "name": "platform",
+            "url": "https://github.com/vulpin-lang/vulplatform"
+        },
+        {
+            "name": "beepboop",
+            "url": "https://vulpin-lang/vulbeep"
+        }
+    ]
+}
