@@ -1,141 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vulpin — the smallest possible programs</title>
-  <meta name="description" content="Vulpin is a scripting language built on C, designed to write the smallest possible programs. One-character commands. A .vul file. Ship it fast.">
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="logo.png" type="image/png">
+  <title>Vulpin programming lang</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+  <style>
+    .bg-orange { background-color: orange; }
+    .bg-torange { background-color: rgb(255, 188, 63); }
+    
+    body { padding-top: 100px; }
+
+    .navbar-logo {
+      height: 32px;       /* Small default size */
+      width: auto;
+      max-height: 32px;   /* Prevents any overflow */
+      object-fit: contain;
+      transition: all 0.4s ease; /* Smooth resize on scroll */
+    }
+
+    /* Even smaller when scrolled */
+    .navbar-scrolled .navbar-logo {
+      height: 24px !important;
+      max-height: 24px !important;
+    }
+  </style>
 </head>
 <body>
 
-  <nav class="navbar">
-    <a class="brand" href="index.html"><img src="logo.png" alt="">Vulpin</a>
-    <div class="navlinks">
-      <a href="docs.html">Docs</a>
-      <a href="getstarted.html">Get Started</a>
-      <a href="download.html">Download</a>
-      <a href="community.html">Community</a>
+<!-- Navbar -->
+<nav id="mainNavbar" class="navbar navbar-expand-sm fixed-top transition-all" 
+     style="background: transparent; padding: 1.5rem 0; transition: all 0.4s ease;">
+  <div class="container-fluid px-4">
+    <a class="navbar-brand fw-bold d-flex align-items-center" href="#" id="navBrand">
+      <img src="logo.png" alt="Vulpin" class="navbar-logo me-2">
+      <span class="align-middle">Vulpin</span>
+    </a>
+
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item mx-1">
+          <a class="nav-link text-dark px-3 py-2 rounded-pill" href="docs.html">
+            <i class="bi bi-book me-1"></i>Docs
+          </a>
+        </li>
+        <li class="nav-item mx-1">
+          <a class="nav-link text-dark px-3 py-2 rounded-pill" href="download.html">
+            <i class="bi bi-download me-1"></i>Download
+          </a>
+        </li>
+        <li class="nav-item mx-1">
+          <a class="nav-link text-dark px-3 py-2 rounded-pill" href="community.html">
+            <i class="bi bi-people me-1"></i>Community
+          </a>
+        </li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
 
-  <header>
-    <div class="hero">
-      <div class="hero-text">
-        <span class="stamp"><span class="dot"></span> v0.9 — the size of a heartbeat</span>
-        <h1>One char.<br>Whole <span class="dotdot">programs.</span></h1>
-        <p class="lead">Vulpin is a scripting language that runs <b>on top of C</b>. Every command is a single character, built to write the <b>smallest possible programs</b> you've ever shipped.</p>
-        <div class="cta">
-          <a class="btn" href="getstarted.html">Write your first .vul</a>
-          <a class="btn ghost" href="download.html">Grab the runtime</a>
+
+<!-- Hero Section -->
+<div class="container-fluid p-5 text-center position-relative overflow-hidden" 
+     style="background: linear-gradient(135deg, #ff8c00, #ffa500); margin-top: 2rem; min-height: 60vh; display: flex; align-items: center; justify-content: center;">
+  
+  <!-- A subtle pattern or overlay to help text pop -->
+  <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0,0,0,0.05); z-index: 0;"></div>
+
+  <div class="position-relative z-1">
+    <!-- Badge for context -->
+    <span class="badge bg-light text-warning mb-3 px-3 py-2 rounded-pill shadow-sm">
+      V x0.9 comming soon!
+    </span>
+
+    <!-- Main Title with Shadow for readability -->
+    <h1 class="display-3 fw-bold mb-3 text-white" style="text-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+      Vulpin
+    </h1>
+
+    <!-- Subtitle with better contrast -->
+    <p class="lead text-white mb-4 fw-medium" style="max-width: 600px; margin: 0 auto; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+      Build your smallest possible programs today. Fast, efficient, and open-source.
+    </p>
+
+    <!-- Buttons with spacing -->
+    <div class="d-flex justify-content-center gap-3">
+      <a href="getstarted.html" class="btn btn-light btn-lg px-4 text-decoration-none shadow-lg fw-bold text-warning">
+        Get Started
+      </a>
+      <a href="https://github.com/vulpin-lang/vulpin" class="btn btn-outline-light btn-lg px-4 text-decoration-none">
+        <i class="bi bi-github me-2"></i>GitHub
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Features Section -->
+<div class="container mt-5 py-5">
+  <div class="row g-4">
+    <div class="col-sm-4">
+      <div class="card h-100 border-0 shadow-sm">
+        <div class="card-body text-center p-4">
+          <div class="mb-3"><i class="bi bi-lightning-charge-fill text-warning" style="font-size: 2.5rem;"></i></div>
+          <h3 class="h4 fw-bold">Fast</h3>
+          <p class="text-muted">Build, run, and compile your programs with blazing speed.</p>
         </div>
-      </div>
-      <div class="fox-card">
-        <img src="logo.png" alt="The Vulpin fox mascot">
-        <div class="fox-name">the famished fox</div>
-        <div class="fox-sub">small programs. big appetite.</div>
-        <div class="plate">v0.9-stable</div>
       </div>
     </div>
-  </header>
-
-  <main>
-
-    <section id="features">
-      <div class="sec-head">
-        <h2>Crafted to disappear</h2>
-        <p>Tiny by design, not by accident.</p>
-      </div>
-      <div class="cards">
-        <div class="card">
-          <div class="keycap">S</div>
-          <h3>Smallest size</h3>
-          <p>One command per action. Your source is a haiku, not a novel. <span class="mono">hello.vul</span> fits in one line.</p>
-        </div>
-        <div class="card">
-          <div class="keycap">F</div>
-          <h3>Fast on C</h3>
-          <p>Built <b>on top of C</b> — so programs stay quick and the runtime stays quiet while you code.</p>
-        </div>
-        <div class="card">
-          <div class="keycap">A</div>
-          <h3>Any OS</h3>
-          <p>Script your machines on Windows, macOS or Linux. The interpreter drops in and gets out of the way.</p>
-        </div>
-        <div class="card">
-          <div class="keycap">O</div>
-          <h3>Open source</h3>
-          <p>Own the whole fox. The language, the docs and every release live in the <b>vulpin-lang</b> GitHub org.</p>
+    <div class="col-sm-4">
+      <div class="card h-100 border-0 shadow-sm">
+        <div class="card-body text-center p-4">
+          <div class="mb-3"><i class="bi bi-box-arrow-in-down-left text-warning" style="font-size: 2.5rem;"></i></div>
+          <h3 class="h4 fw-bold">Smallest Size</h3>
+          <p class="text-muted">Build your smallest possible programs with ease.</p>
         </div>
       </div>
-    </section>
-
-    <section id="demo">
-      <div class="sec-head">
-        <h2>See how small gets loud</h2>
-        <p>Every command runs right here in your browser. Type, poke a sample, hit Run.</p>
-      </div>
-      <div class="term">
-        <div class="term-bar">
-          <span class="led r"></span><span class="led y"></span><span class="led g"></span>
-          <span class="term-title">vulpin — in-browser playground</span>
+    </div>
+    <div class="col-sm-4">
+      <div class="card h-100 border-0 shadow-sm">
+        <div class="card-body text-center p-4">
+          <div class="mb-3"><i class="bi bi-laptop text-warning" style="font-size: 2.5rem;"></i></div>
+          <h3 class="h4 fw-bold">Any OS</h3>
+          <p class="text-muted">Vulpin runs on any operating system!</p>
         </div>
-        <div class="demo-wrap">
-          <div class="demo-side">
-            <label class="demo-label">your .vul program</label>
-            <textarea class="demo-editor" id="demoSrc" spellcheck="false" aria-label="Vulpin program editor"></textarea>
-            <div class="demo-bar">
-              <button class="btn" id="demoRun">Run ▸</button>
-              <span class="demo-ok" id="demoStatus">ready</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Open Source Section -->
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <!-- Card with Gradient Background -->
+      <div class="card border-0 shadow-lg overflow-hidden" style="background: linear-gradient(135deg, #ff8c00, #ffa500);">
+        <div class="card-body text-center p-5 position-relative">
+          
+          <!-- Optional: Subtle overlay for texture -->
+          <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(255,255,255,0.1); z-index: 0;"></div>
+
+          <div class="position-relative z-1">
+            <!-- Icon/Badge -->
+            <div class="mb-4">
+              <span class="badge bg-light text-warning px-3 py-2 rounded-pill shadow-sm">
+                v1.0 Released
+              </span>
             </div>
-            <div class="demo-samples" id="demoSamples" aria-label="sample programs"></div>
-            <div class="demo-ins">
-              <b>how this works</b>
-              <p>The first character of a line is the command; everything after it is the argument. <span class="tk-c">G"Hi"</span> prints with a newline, <span class="tk-c">g"Hi"</span> prints without one. Read a full cheat-sheet on the <a href="docs.html">docs page</a>.</p>
+
+            <!-- Title with Shadow for Readability -->
+            <h1 class="display-4 fw-bold text-white mb-3" style="text-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+              Vulpin
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="lead text-white mb-4 fw-medium" style="max-width: 600px; margin: 0 auto; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+              Build your smallest possible programs today. Fast, efficient, and open-source.
+            </p>
+
+            <!-- Buttons -->
+            <div class="d-flex justify-content-center gap-3">
+              <a href="getstarted.html" class="btn btn-light btn-lg px-4 text-decoration-none shadow-sm fw-bold text-warning">
+                Get Started
+              </a>
+              <a href="https://github.com/vulpin-lang/vulpin" class="btn btn-outline-light btn-lg px-4 text-decoration-none">
+                <i class="bi bi-github me-2"></i>GitHub
+              </a>
             </div>
           </div>
-          <div class="screen demo-out" id="demoOut" role="log" aria-live="polite">
-            <pre><span class="tk-s">vulpin v0.9 — every command, live</span></pre>
-          </div>
+
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</div>
 
-    <section id="opensource">
-      <div class="sec-head">
-        <h2>Born in the open</h2>
-        <p>No mystery meat. Read it, fork it, break it, fix it.</p>
-      </div>
-      <div class="community-card" style="max-width:560px">
-        <div class="talk"><img src="logo.png" alt="" style="width:38px;height:38px"></div>
-        <h2>One tiny command away</h2>
-        <p>Already on the toolchain? Bring it into any project.</p>
-        <a class="btn green" href="download.html">Get the interpreter</a>
-      </div>
-    </section>
 
-    <section id="sponsor">
-      <div class="sec-head">
-        <h2>Powered with a little help</h2>
-        <p>Thanks to the folks who keep the fox fed.</p>
-      </div>
-      <div class="cards" style="grid-template-columns:1fr">
-        <div class="card" style="text-align:center">
-          <img src="fluxcast.png" alt="FluxCast" style="height:34px;display:inline-block;margin-bottom:8px">
-          <h3>Hosted by FluxCast</h3>
-          <p>The Vulpin homepages load lightning-fast, served by the FluxCast network.</p>
+<div class="container mt-5 py-5">
+  <div class="row g-4">
+    <div class="col-sm">
+      <div class="card h-100 border-0 shadow-sm">
+        <div class="card-body text-center p-4">
+          <h3 class="h4 fw-bold">Sponsers</h3>
+          <!--<div class="mb-3"><i class="bi bi-database text-warning" style="font-size: 2.5rem;"></i>cake</div>-->
+          <img src="fluxcast.png" alt="Vulpin" class="navbar-logo me-2">
         </div>
-      </div>
-    </section>
+        </div>
+        </div>
+<!-- Scroll test content -->
 
-  </main>
 
-  <footer>
-    <div>made by Vulpin, chipped by the vulpin community</div>
-    <div class="copyright">© 2026 vulpin-lang · released under the MIT license</div>
-  </footer>
 
-  <script type="module" src="demo.js"></script>
+<p class="text-center">2026 CopyRight by ilunonix All Right Reversed.</p>
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script> 
+
+<script>
+window.addEventListener('scroll', function() {
+  const navbar = document.getElementById('mainNavbar');
+  const brandText = document.querySelector('#navBrand span');
+  
+  if (window.scrollY > 50) {
+    navbar.style.background = 'linear-gradient(135deg, #ff8c00, #ffa500)';
+    navbar.style.padding = '0.5rem 0';
+    navbar.style.margin = '0.5rem auto';
+    navbar.style.width = '90%';
+    navbar.style.maxWidth = '1200px';
+    navbar.style.borderRadius = '15px';
+    navbar.style.boxShadow = '0 4px 15px rgba(255, 140, 0, 0.3)';
+    navbar.classList.add('navbar-scrolled'); // Triggers smaller logo via CSS
+    
+    if(brandText) { brandText.classList.add('text-white'); brandText.classList.remove('text-dark'); }
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.classList.remove('text-dark'); link.classList.add('text-white');
+      link.style.background = 'rgba(255, 255, 255, 0.1)';
+    });
+    document.querySelector('.navbar-toggler-icon').style.filter = 'invert(1)';
+  } else {
+    navbar.style.background = 'transparent';
+    navbar.style.padding = '1.5rem 0';
+    navbar.style.margin = '0';
+    navbar.style.width = '100%';
+    navbar.style.maxWidth = '100%';
+    navbar.style.borderRadius = '0';
+    navbar.style.boxShadow = 'none';
+    navbar.classList.remove('navbar-scrolled'); // Restores normal logo size
+    
+    if(brandText) { brandText.classList.remove('text-white'); brandText.classList.add('text-dark'); }
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.classList.remove('text-white'); link.classList.add('text-dark');
+      link.style.background = 'transparent';
+    });
+    document.querySelector('.navbar-toggler-icon').style.filter = 'invert(0)';
+  }
+});
+</script>
+
 </body>
 </html>
