@@ -1,192 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Docs — Vulpin</title>
-  <meta name="description" content="Vulpin documentation: every single-character command, typed input, variables, control flow, functions and error handling.">
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="logo.png" type="image/png">
+  <title>Vulpin programming lang</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+  <style>
+    .bg-orange { background-color: orange; }
+    .bg-torange { background-color: rgb(255, 188, 63); }
+    
+    body { padding-top: 100px; }
+
+    .navbar-logo {
+      height: 32px;       /* Small default size */
+      width: auto;
+      max-height: 32px;   /* Prevents any overflow */
+      object-fit: contain;
+      transition: all 0.4s ease; /* Smooth resize on scroll */
+    }
+
+    /* Even smaller when scrolled */
+    .navbar-scrolled .navbar-logo {
+      height: 24px !important;
+      max-height: 24px !important;
+    }
+  </style>
 </head>
 <body>
 
-  <nav class="navbar">
-    <a class="brand" href="index.html"><img src="logo.png" alt="">Vulpin</a>
-    <div class="navlinks">
-      <a class="on" href="docs.html">Docs</a>
-      <a href="getstarted.html">Get Started</a>
-      <a href="download.html">Download</a>
-      <a href="community.html">Community</a>
+<!-- Navbar -->
+<nav id="mainNavbar" class="navbar navbar-expand-sm fixed-top transition-all" 
+     style="background: transparent; padding: 1.5rem 0; transition: all 0.4s ease;">
+  <div class="container-fluid px-4">
+    <a class="navbar-brand fw-bold d-flex align-items-center" href="#" id="navBrand">
+      <img src="logo.png" alt="Vulpin" class="navbar-logo me-2">
+      <span class="align-middle">Vulpin</span>
+    </a>
+
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item mx-1">
+          <a class="nav-link text-dark px-3 py-2 rounded-pill" href="docs.html">
+            <i class="bi bi-book me-1"></i>Docs
+          </a>
+        </li>
+        <li class="nav-item mx-1">
+          <a class="nav-link text-dark px-3 py-2 rounded-pill" href="download.html">
+            <i class="bi bi-download me-1"></i>Download
+          </a>
+        </li>
+        <li class="nav-item mx-1">
+          <a class="nav-link text-dark px-3 py-2 rounded-pill" href="community.html">
+            <i class="bi bi-people me-1"></i>Community
+          </a>
+        </li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
 
-  <main>
 
-    <section>
-      <div class="sec-head">
-        <h2>The command sheet</h2>
-        <p>Every order on the menu, straight from the interpreter.</p>
-      </div>
 
-      <div class="docs-grid">
+<style>
+  .step-line {
+    position: absolute;
+    left: 25px; /* Half of circle width (50px) */
+    top: 50px;  /* Start below the first circle */
+    bottom: -20px;
+    width: 3px;
+    background-color: #e9ecef;
+    z-index: -1;
+  }
+  
+  /* Optional: Make the line orange for completed steps */
+  .step-completed .step-line {
+    background: linear-gradient(180deg, #ff8c00, #ffa500);
+  }
+</style>
 
-        <div class="doc-card">
-          <h3><span>G / P</span> — output</h3>
-          <p><strong>G</strong> prints a value with a newline. <strong>P</strong> prints without one. Math works too.</p>
-          <code class="mono">G"Hello"          <span style="color:#5f8a4c"># prints with newline</span>
-P"Loading..."     <span style="color:#5f8a4c"># prints without newline</span>
-G 5 + 3          <span style="color:#5f8a4c"># prints 8</span></code>
-        </div>
 
-        <div class="doc-card">
-          <h3><span>K</span> — typed input</h3>
-          <p>Read input straight into a variable. The trailing type letter decides what counts as valid.</p>
-          <code class="mono">K user "Your name: "
-K age  "Age: " I     <span style="color:#5f8a4c"># integer, default 0</span>
-K price "Price: " F  <span style="color:#5f8a4c"># float, default 0.0</span>
-K letter "Guess: " L <span style="color:#5f8a4c"># single char</span></code>
-          <p><span class="tk-c">I</span>int <span class="tk-c">F</span>float <span class="tk-c">N</span>number <span class="tk-c">L</span>letter <span class="tk-c">W</span>word <span class="tk-c">E</span>lower <span class="tk-c">U</span>upper <span class="tk-c">A</span>letters+spaces <span class="tk-c">P</span>alnum+spaces</p>
-        </div>
 
-        <div class="doc-card">
-          <h3><span>=</span> — variables</h3>
-          <p>Assign with <strong>=</strong>, add to in place with <strong>A</strong>, replace substrings with <strong>S</strong>, delete with <strong>D</strong>.</p>
-          <code class="mono">name="Vul"
-A"x"+5              <span style="color:#5f8a4c"># x = x + 5</span>
-S"msg""o""0"        <span style="color:#5f8a4c"># replace "o" with "0"</span>
-D"y"                <span style="color:#5f8a4c"># delete y</span></code>
-          <p>String shortcuts: <span class="tk-c">.U</span> upper · <span class="tk-c">.L</span> lower · <span class="tk-c">.S</span> strip · <span class="tk-c">.T</span> title · <span class="tk-c">.C</span> capitalize</p>
-        </div>
 
-        <div class="doc-card">
-          <h3><span>? : ;</span> — if / else</h3>
-          <p>Test a condition, branch, and close the block.</p>
-          <code class="mono">? score >= 90
-    G"A"
-:
-? score >= 80
-    G"B"
-:
-    G"C"
-;</code>
-        </div>
+<div class="container-fluid p-5 text-center" style="background: linear-gradient(135deg, #ff8c00, #ffa500); margin-top: 2rem;">
+  <h1 class="display-4 fw-bold mb-3 text-white">Docs is under building!</h1>
+  <p class="lead text-white-50">You should wait until we build docs page :(</p>
+  <div class="text-center">
+</div>
+</div>
 
-        <div class="doc-card">
-          <h3><span>@ &</span> — while loop</h3>
-          <p><strong>@</strong> opens the loop, <strong>&</strong> closes it. <strong>@1</strong> loops forever.</p>
-          <code class="mono">i=0
-@ i < 5
-    G i
-    i=i+1
-&
 
-@1              <span style="color:#5f8a4c"># infinite loop</span>
-    G"Running..."
-&</code>
-        </div>
 
-        <div class="doc-card">
-          <h3><span>O</span> — for-range</h3>
-          <p>Iterate a variable over a start, end and step.</p>
-          <code class="mono">O i 0 5          <span style="color:#5f8a4c"># 0,1,2,3,4</span>
-    G i
-&
 
-O x 10 0 -2      <span style="color:#5f8a4c"># 10,8,6,4,2</span>
-    G x
-&</code>
-        </div>
 
-        <div class="doc-card">
-          <h3><span>J / L</span> — jumps &amp; labels</h3>
-          <p><strong>J</strong> jumps to a label defined by <strong>L</strong> — with or without a condition.</p>
-          <code class="mono">J end
-G"Skipped"
-L end
-G"Done"</code>
-        </div>
 
-        <div class="doc-card">
-          <h3><span>W V N Z</span> — switch / case</h3>
-          <p>Match one value against many. <strong>N</strong> starts the default case, <strong>Z</strong> closes the switch.</p>
-          <code class="mono">W fruit
-V"banana"
-    G"yellow"
-V"apple"
-    G"red or green"
-N
-    G"unknown"
-Z</code>
-        </div>
+<style>
+  /* Base style for the line */
+  .step-line {
+    position: absolute;
+    left: 25px; 
+    top: 50px;  
+    height: 100%; /* Full height of the container */
+    max-height: calc(100% + 40px); /* Extend slightly to reach next circle */
+    width: 3px;
+    background-color: #e9ecef;
+    z-index: -1;
+    
+    /* Animation Setup */
+    transform-origin: top center;
+    animation: rollLine 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    clip-path: inset(0 0 100% 0); /* Start hidden (clipped at bottom) */
+  }
+  
+  /* The rolling/drawing animation */
+  @keyframes rollLine {
+    to {
+      clip-path: inset(0 0 0 0); /* Reveal fully */
+    }
+  }
 
-        <div class="doc-card">
-          <h3><span>F R ~</span> — functions</h3>
-          <p>Define with <strong>F</strong>, return with <strong>R</strong>, close with <strong>~</strong>.</p>
-          <code class="mono">F add(a, b)
-    R a + b
-~
-G add(3, 4)     <span style="color:#5f8a4c"># 7</span>
+  /* Step content fade-in */
+  .step-item {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
 
-F greet(name)
-    G"Hello " + name
-~
-greet("World")</code>
-        </div>
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
-        <div class="doc-card">
-          <h3><span>U</span> — imports</h3>
-          <p>Pull in C or Vulpin modules with <strong>U</strong>, then use them with the dot operator.</p>
-          <code class="mono">U"os"
-G os.getcwd()
-os.system("echo Hello")
+  /* Staggered delays for the "rolling" sequence */
+  .step-item:nth-child(1) .step-line { animation-delay: 0.1s; }
+  .step-item:nth-child(2) .step-line { animation-delay: 0.6s; }
+  
+  .step-item:nth-child(1) { animation-delay: 0.1s; }
+  .step-item:nth-child(2) { animation-delay: 0.6s; }
+  .step-item:nth-child(3) { animation-delay: 1.1s; }
 
-U"math"
-G math.sqrt(16)</code>
-        </div>
+  /* Orange gradient for completed steps */
+  .step-completed .step-line {
+    background: linear-gradient(180deg, #ff8c00, #ffa500);
+  }
+</style>
 
-        <div class="doc-card">
-          <h3><span>T C Y</span> — error handling</h3>
-          <p>Wrap a fragile block in <strong>T</strong>, catch with <strong>C"err"</strong>, close with <strong>Y</strong>.</p>
-          <code class="mono">T
-    x=10
-    y=0
-    G x/y       <span style="color:#5f8a4c"># division by zero!</span>
-C"err"
-    G"Error: " + err
-Y
-G"Continues..."</code>
-        </div>
+<h5 class="text-center p-5">We teach on this page! Well wait for us! :D</h5>
 
-        <div class="doc-card">
-          <h3><span>D</span> — delay</h3>
-          <p>Pause for a number of seconds, or for the value stored in a variable.</p>
-          <code class="mono">D1          <span style="color:#5f8a4c"># wait 1 second</span>
-D0.5        <span style="color:#5f8a4c"># wait half a second</span>
-D delay     <span style="color:#5f8a4c"># wait variable</span></code>
-        </div>
+<hr>
 
-        <div class="doc-card">
-          <h3><span>$</span> — the runtime</h3>
-          <p>Run, build and check the version from the terminal.</p>
-          <code class="mono">vulpin hello.vul   <span style="color:#5f8a4c"># run a program</span>
-vulpin build       <span style="color:#5f8a4c"># build your app</span>
-vulpin version     <span style="color:#5f8a4c"># → Vul 0.9</span></code>
-          <p>Spaces are optional after commands — <span class="tk-c">G"Hi"</span> and <span class="tk-c">G "Hi"</span> both work.</p>
-        </div>
+<p class="text-center">2026 CopyRight by ilunonix All Right Reversed.</p>
 
-      </div>
 
-      <div style="text-align:center;margin-top:34px">
-        <a class="btn ghost" href="getstarted.html">← Back to the 3 steps</a>
-      </div>
-    </section>
 
-  </main>
 
-  <footer>
-    <div>made by Vulpin, chipped by the vulpin community</div>
-    <div class="copyright">© 2026 vulpin-lang · released under the MIT license</div>
-  </footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script> 
+
+<script>
+window.addEventListener('scroll', function() {
+  const navbar = document.getElementById('mainNavbar');
+  const brandText = document.querySelector('#navBrand span');
+  
+  if (window.scrollY > 50) {
+    navbar.style.background = 'linear-gradient(135deg, #ff8c00, #ffa500)';
+    navbar.style.padding = '0.5rem 0';
+    navbar.style.margin = '0.5rem auto';
+    navbar.style.width = '90%';
+    navbar.style.maxWidth = '1200px';
+    navbar.style.borderRadius = '15px';
+    navbar.style.boxShadow = '0 4px 15px rgba(255, 140, 0, 0.3)';
+    navbar.classList.add('navbar-scrolled'); // Triggers smaller logo via CSS
+    
+    if(brandText) { brandText.classList.add('text-white'); brandText.classList.remove('text-dark'); }
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.classList.remove('text-dark'); link.classList.add('text-white');
+      link.style.background = 'rgba(255, 255, 255, 0.1)';
+    });
+    document.querySelector('.navbar-toggler-icon').style.filter = 'invert(1)';
+  } else {
+    navbar.style.background = 'transparent';
+    navbar.style.padding = '1.5rem 0';
+    navbar.style.margin = '0';
+    navbar.style.width = '100%';
+    navbar.style.maxWidth = '100%';
+    navbar.style.borderRadius = '0';
+    navbar.style.boxShadow = 'none';
+    navbar.classList.remove('navbar-scrolled'); // Restores normal logo size
+    
+    if(brandText) { brandText.classList.remove('text-white'); brandText.classList.add('text-dark'); }
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.classList.remove('text-white'); link.classList.add('text-dark');
+      link.style.background = 'transparent';
+    });
+    document.querySelector('.navbar-toggler-icon').style.filter = 'invert(0)';
+  }
+});
+</script>
 
 </body>
 </html>
