@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Download · Vulpin</title>
+  <title>Playground · Vulpin</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Download the latest Vulpin release for Windows, macOS, Linux, and Android.">
+  <meta name="description" content="Run Vulpin programs directly in your browser — no install required.">
   <link rel="icon" href="logo.png" type="image/png">
 
   <!-- Bootstrap CSS -->
@@ -27,7 +27,7 @@
   <div class="container-fluid px-4">
     <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
       <img src="logo.png" alt="Vulpin" class="navbar-logo me-2">
-      <span class="align-middle">Vulpin</span>
+      <span class="align-middle">vulpin<span class="brand-paren">()</span></span>
     </a>
 
     <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,71 +67,50 @@
 </nav>
 
 <main id="main">
-<div class="hero p-5 text-center" style="min-height: 32vh; display: flex; align-items: center; justify-content: center;">
+<div class="hero p-5 text-center" style="min-height: 28vh; display:flex; align-items:center; justify-content:center;">
+  <div class="hero-blob hero-blob-a" aria-hidden="true"></div>
+  <div class="hero-blob hero-blob-b" aria-hidden="true"></div>
   <div class="hero-overlay"></div>
-  <canvas class="hero-scene" aria-hidden="true"></canvas>
-
+  <svg class="hero-ridge" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,120 L0,60 L80,75 L160,30 L260,68 L360,20 L460,64 L560,26 L660,70 L760,34 L860,66 L960,22 L1060,60 L1200,40 L1200,120 Z"></path>
+  </svg>
   <div class="hero-content">
-    <h1 class="display-3 fw-bold mb-3 text-white" style="text-shadow: 0 4px 10px rgba(0,0,0,0.2);">
-      Vulpin
-    </h1>
-    <p class="lead text-white mb-3 fw-medium mx-auto" style="max-width: 600px; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-      Download
-    </p>
-    <p class="lead text-white mb-0" style="font-size: 1.6rem;">
-      <i class="bi bi-windows me-3" title="Windows" aria-label="Windows"></i>
-      <i class="bi bi-apple me-3" title="macOS" aria-label="macOS"></i>
-      <i class="bi bi-ubuntu me-3" title="Linux" aria-label="Linux"></i>
-      <i class="bi bi-android2" title="Android" aria-label="Android"></i>
+    <h1 class="display-4 fw-bold mb-2 text-white" style="text-shadow: 0 4px 10px rgba(0,0,0,0.2);">Playground</h1>
+    <p class="lead text-white mb-0 fw-medium" style="text-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+      Vulpin, running entirely in your browser. Nothing to install.
     </p>
   </div>
 </div>
 
 <div class="container py-5">
   <div class="row">
-    <div class="col-lg-9 mx-auto">
+    <div class="col-lg-10 mx-auto">
 
-      <h2 class="h4 fw-bold mb-3">Releases</h2>
-      <div class="list-group mb-5">
-        <a href="https://github.com/vulpin-lang/Vulpin/releases/tag/V0.9"
-           class="list-group-item list-group-item-action d-flex align-items-center gap-2"
-           target="_blank" rel="noopener noreferrer">
-          <i class="bi bi-download text-warning"></i>
-          <span class="fw-bold">Source — v0.9</span>
-          <span class="badge bg-warning text-white ms-2">latest</span>
-        </a>
-        <a href="https://github.com/vulpin-lang/Vulpin/releases/tag/V0.8beta"
-           class="list-group-item list-group-item-action d-flex align-items-center gap-2"
-           target="_blank" rel="noopener noreferrer">
-          <i class="bi bi-download text-warning"></i>
-          <span class="fw-bold">Source — v0.8 beta</span>
-        </a>
-        <a href="https://github.com/vulpin-lang/Vulpin/releases/tag/V0.7.5"
-           class="list-group-item list-group-item-action d-flex align-items-center gap-2"
-           target="_blank" rel="noopener noreferrer">
-          <i class="bi bi-download text-warning"></i>
-          <span class="fw-bold">Source — v0.7.5 beta</span>
-        </a>
-        <a href="https://github.com/vulpin-lang/Vulpin/releases/tag/V0.6"
-           class="list-group-item list-group-item-action d-flex align-items-center gap-2"
-           target="_blank" rel="noopener noreferrer">
-          <i class="bi bi-download text-warning"></i>
-          <span class="fw-bold">Source — v0.6</span>
-        </a>
+      <p class="text-muted mb-3">Pick a sample, or write your own, then run it.</p>
+      <div id="demoSamples" class="mb-4"></div>
+
+      <div class="playground-panel p-3 reveal">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label for="demoSrc" class="form-label text-white-50 small text-uppercase mb-1">Source</label>
+            <textarea id="demoSrc" class="form-control" spellcheck="false" aria-describedby="demoStatus"></textarea>
+          </div>
+          <div class="col-md-6">
+            <span id="demoOutLabel" class="form-label text-white-50 small text-uppercase mb-1 d-block">Output</span>
+            <div id="demoOut" role="status" aria-live="polite" aria-labelledby="demoOutLabel"><pre></pre></div>
+          </div>
+        </div>
+        <div class="d-flex align-items-center justify-content-between mt-3">
+          <button id="demoRun" type="button" class="btn btn-warning fw-bold text-white px-4">
+            <i class="bi bi-play-fill me-1"></i>Run <span class="text-white-50 small">(Ctrl/Cmd + Enter)</span>
+          </button>
+          <span id="demoStatus" class="text-white-50 small">ready</span>
+        </div>
       </div>
 
-      <h2 class="h4 fw-bold mb-3">Version adoption</h2>
-      <p class="text-muted small">Share of downloads by version family, most recent snapshot.</p>
-      <div class="progress mb-2" style="height: 30px;" role="img" aria-label="v0.9: 45%, v0.7-v0.8: 25%, older versions: 30%">
-        <div class="progress-bar bg-warning text-white" style="width: 45%">v0.9</div>
-        <div class="progress-bar" style="width: 25%; background-color: var(--v-orange-3);">v0.7 – v0.8</div>
-        <div class="progress-bar bg-dark" style="width: 30%">Older</div>
-      </div>
-
-      <p class="text-center mt-5">
-        <a href="getstarted.html" class="text-warning fw-bold text-decoration-none">
-          New here? Start with the setup guide <i class="bi bi-arrow-right-short"></i>
-        </a>
+      <p class="text-muted small mt-3">
+        This playground runs a JavaScript port of the Vulpin interpreter for instant feedback in the browser.
+        It supports the full command set documented on the <a href="docs.html" class="text-warning text-decoration-none fw-bold">docs page</a>.
       </p>
 
     </div>
@@ -152,7 +131,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 <script src="site.js"></script>
-<script type="module" src="scene.js"></script>
-
+<script src="motion.js"></script>
+<script type="module" src="demo.js"></script>
 </body>
 </html>

@@ -27,7 +27,7 @@
   <div class="container-fluid px-4">
     <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
       <img src="logo.png" alt="Vulpin" class="navbar-logo me-2">
-      <span class="align-middle">Vulpin</span>
+      <span class="align-middle">vulpin<span class="brand-paren">()</span></span>
     </a>
 
     <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,8 +68,12 @@
 
 <main id="main">
 <div class="hero p-5 text-center" style="min-height: 32vh; display:flex; align-items:center; justify-content:center;">
+  <div class="hero-blob hero-blob-a" aria-hidden="true"></div>
+  <div class="hero-blob hero-blob-b" aria-hidden="true"></div>
   <div class="hero-overlay"></div>
-  <canvas class="hero-scene" aria-hidden="true"></canvas>
+  <svg class="hero-ridge" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,120 L0,60 L80,75 L160,30 L260,68 L360,20 L460,64 L560,26 L660,70 L760,34 L860,66 L960,22 L1060,60 L1200,40 L1200,120 Z"></path>
+  </svg>
   <div class="hero-content">
     <h1 class="display-4 fw-bold mb-2 text-white" style="text-shadow: 0 4px 10px rgba(0,0,0,0.2);">Docs</h1>
     <p class="lead text-white mb-0 fw-medium" style="text-shadow: 0 2px 4px rgba(0,0,0,0.1);">The full command reference is short — that's the point.</p>
@@ -87,6 +91,7 @@
         so it won't drift out of date.
       </p>
 
+      <div class="reveal">
       <h2 class="h4 fw-bold mt-5 mb-3">Output &amp; input</h2>
       <div class="table-responsive">
         <table class="table align-middle">
@@ -98,7 +103,9 @@
           </tbody>
         </table>
       </div>
+      </div>
 
+      <div class="reveal">
       <h2 class="h4 fw-bold mt-5 mb-3">Variables</h2>
       <div class="table-responsive">
         <table class="table align-middle">
@@ -110,7 +117,9 @@
           </tbody>
         </table>
       </div>
+      </div>
 
+      <div class="reveal">
       <h2 class="h4 fw-bold mt-5 mb-3">Control flow</h2>
       <div class="table-responsive">
         <table class="table align-middle">
@@ -124,7 +133,9 @@
           </tbody>
         </table>
       </div>
+      </div>
 
+      <div class="reveal">
       <h2 class="h4 fw-bold mt-5 mb-3">Functions &amp; errors</h2>
       <div class="table-responsive">
         <table class="table align-middle">
@@ -136,7 +147,9 @@
           </tbody>
         </table>
       </div>
+      </div>
 
+      <div class="reveal">
       <h2 class="h4 fw-bold mt-5 mb-3">Strings &amp; built-ins</h2>
       <p class="text-muted mb-2">Shortcuts on a string variable:</p>
       <ul class="text-muted">
@@ -148,8 +161,9 @@
         <code>len</code>, <code>upper</code>, <code>lower</code>, <code>title</code>, <code>char</code>, <code>ord</code>,
         <code>rand</code>, <code>min</code>, <code>max</code>
       </p>
+      </div>
 
-      <div class="text-center mt-5">
+      <div class="text-center mt-5 reveal">
         <a href="playground.html" class="btn btn-warning btn-lg text-white fw-bold px-4">
           <i class="bi bi-play-fill me-1"></i>Try these in the playground
         </a>
@@ -173,7 +187,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 <script src="site.js"></script>
-<script type="module" src="scene.js"></script>
+<script src="motion.js"></script>
 
 </body>
 </html>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Community · Vulpin</title>
+  <title>Get Started · Vulpin</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Join the Vulpin community on Discord to discuss, report bugs, and contribute.">
+  <meta name="description" content="Install Vulpin and write your first program in three steps.">
   <link rel="icon" href="logo.png" type="image/png">
 
   <!-- Bootstrap CSS -->
@@ -27,7 +27,7 @@
   <div class="container-fluid px-4">
     <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
       <img src="logo.png" alt="Vulpin" class="navbar-logo me-2">
-      <span class="align-middle">Vulpin</span>
+      <span class="align-middle">vulpin<span class="brand-paren">()</span></span>
     </a>
 
     <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,55 +68,74 @@
 
 <main id="main">
 <div class="hero p-5 text-center" style="min-height: 32vh; display:flex; align-items:center; justify-content:center;">
+  <div class="hero-blob hero-blob-a" aria-hidden="true"></div>
+  <div class="hero-blob hero-blob-b" aria-hidden="true"></div>
   <div class="hero-overlay"></div>
-  <canvas class="hero-scene" aria-hidden="true"></canvas>
+  <svg class="hero-ridge" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,120 L0,60 L80,75 L160,30 L260,68 L360,20 L460,64 L560,26 L660,70 L760,34 L860,66 L960,22 L1060,60 L1200,40 L1200,120 Z"></path>
+  </svg>
   <div class="hero-content">
-    <h1 class="display-4 fw-bold mb-3 text-white" style="text-shadow: 0 4px 10px rgba(0,0,0,0.2);">Join the community</h1>
-    <p class="lead text-white mb-4 fw-medium" style="text-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-      Ask questions, share what you're building, and help shape Vulpin.
-    </p>
-    <a href="https://discord.gg/ggxSCWmEKHPv"
-       class="btn btn-light btn-lg px-4 text-decoration-none shadow-sm fw-bold text-warning"
-       target="_blank" rel="noopener noreferrer">
-      <i class="bi bi-discord me-2"></i>Join on Discord
-    </a>
+    <h1 class="display-4 fw-bold mb-2 text-white" style="text-shadow: 0 4px 10px rgba(0,0,0,0.2);">Let's start!</h1>
+    <p class="lead text-white mb-0 fw-medium" style="text-shadow: 0 2px 4px rgba(0,0,0,0.1);">Three steps and you're writing Vulpin.</p>
   </div>
 </div>
 
 <div class="container py-5">
-  <div class="row g-4">
-    <div class="col-md-4">
-      <div class="card feature-card h-100">
-        <div class="card-body text-center p-4">
-          <div class="mb-3"><i class="bi bi-chat-dots text-warning" style="font-size: 2.5rem;"></i></div>
-          <h3 class="h5 fw-bold">Discuss</h3>
-          <p class="text-muted mb-0">Trade ideas on language design, ask "how would I..." questions, and get quick answers.</p>
+  <div class="row">
+    <div class="col-lg-8 mx-auto reveal-group">
+
+      <!-- Step 1 -->
+      <div class="d-flex mb-4 position-relative step-item reveal">
+        <div class="flex-shrink-0">
+          <div class="rounded-circle bg-warning text-white d-flex align-items-center justify-content-center fw-bold shadow-sm"
+               style="width: 50px; height: 50px; font-size: 1.2rem;">
+            1
+          </div>
+          <div class="step-line"></div>
+        </div>
+        <div class="flex-grow-1 ms-4 pt-2">
+          <h5 class="fw-bold mb-1">Install Vulpin</h5>
+          <p class="text-muted mb-0">
+            Grab the latest release <a href="download.html" class="text-warning fw-bold text-decoration-none">from the download page</a>.
+          </p>
         </div>
       </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card feature-card h-100">
-        <div class="card-body text-center p-4">
-          <div class="mb-3"><i class="bi bi-bug text-warning" style="font-size: 2.5rem;"></i></div>
-          <h3 class="h5 fw-bold">Report bugs</h3>
-          <p class="text-muted mb-0">Found something broken? Open an issue on <a href="https://github.com/vulpin-lang/vulpin/issues" class="text-warning text-decoration-none fw-bold">GitHub</a> and we'll take a look.</p>
+
+      <!-- Step 2 -->
+      <div class="d-flex mb-4 position-relative step-item reveal">
+        <div class="flex-shrink-0">
+          <div class="rounded-circle bg-warning text-white d-flex align-items-center justify-content-center fw-bold shadow-sm"
+               style="width: 50px; height: 50px; font-size: 1.2rem;">
+            2
+          </div>
+          <div class="step-line"></div>
+        </div>
+        <div class="flex-grow-1 ms-4 pt-2">
+          <h5 class="fw-bold mb-1">Set it up</h5>
+          <p class="text-muted mb-0">
+            Unpack the release for your OS and add it to your PATH. No dependencies to install.
+          </p>
         </div>
       </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card feature-card h-100">
-        <div class="card-body text-center p-4">
-          <div class="mb-3"><i class="bi bi-code-slash text-warning" style="font-size: 2.5rem;"></i></div>
-          <h3 class="h5 fw-bold">Contribute</h3>
-          <p class="text-muted mb-0">Vulpin is MIT licensed. Pull requests, docs fixes, and new sample programs are all welcome.</p>
+
+      <!-- Step 3 -->
+      <div class="d-flex mb-4 position-relative step-item reveal">
+        <div class="flex-shrink-0">
+          <div class="rounded-circle bg-light border border-warning text-warning d-flex align-items-center justify-content-center fw-bold shadow-sm"
+               style="width: 50px; height: 50px; font-size: 1.2rem;">
+            3
+          </div>
+        </div>
+        <div class="flex-grow-1 ms-4 pt-2">
+          <h5 class="fw-bold mb-1">Write your first program</h5>
+          <p class="text-muted mb-0">
+            No install yet? Try Vulpin right now in the <a href="playground.html" class="text-warning fw-bold text-decoration-none">browser playground</a> — or read the <a href="docs.html" class="text-warning fw-bold text-decoration-none">docs</a> once you're set up locally.
+          </p>
         </div>
       </div>
+
     </div>
   </div>
-
-  <p class="text-center text-muted mt-5">
-    Already have something running? Show it off in the <a href="playground.html" class="text-warning text-decoration-none fw-bold">playground</a> and share the source with the community.
-  </p>
 </div>
 
 </main>
@@ -133,7 +152,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 <script src="site.js"></script>
-<script type="module" src="scene.js"></script>
+<script src="motion.js"></script>
 
 </body>
 </html>

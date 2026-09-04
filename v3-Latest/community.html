@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Playground · Vulpin</title>
+  <title>Community · Vulpin</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Run Vulpin programs directly in your browser — no install required.">
+  <meta name="description" content="Join the Vulpin community on Discord to discuss, report bugs, and contribute.">
   <link rel="icon" href="logo.png" type="image/png">
 
   <!-- Bootstrap CSS -->
@@ -27,7 +27,7 @@
   <div class="container-fluid px-4">
     <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
       <img src="logo.png" alt="Vulpin" class="navbar-logo me-2">
-      <span class="align-middle">Vulpin</span>
+      <span class="align-middle">vulpin<span class="brand-paren">()</span></span>
     </a>
 
     <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,50 +67,60 @@
 </nav>
 
 <main id="main">
-<div class="hero p-5 text-center" style="min-height: 28vh; display:flex; align-items:center; justify-content:center;">
+<div class="hero p-5 text-center" style="min-height: 32vh; display:flex; align-items:center; justify-content:center;">
+  <div class="hero-blob hero-blob-a" aria-hidden="true"></div>
+  <div class="hero-blob hero-blob-b" aria-hidden="true"></div>
   <div class="hero-overlay"></div>
-  <canvas class="hero-scene" aria-hidden="true"></canvas>
+  <svg class="hero-ridge" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,120 L0,60 L80,75 L160,30 L260,68 L360,20 L460,64 L560,26 L660,70 L760,34 L860,66 L960,22 L1060,60 L1200,40 L1200,120 Z"></path>
+  </svg>
   <div class="hero-content">
-    <h1 class="display-4 fw-bold mb-2 text-white" style="text-shadow: 0 4px 10px rgba(0,0,0,0.2);">Playground</h1>
-    <p class="lead text-white mb-0 fw-medium" style="text-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-      Vulpin, running entirely in your browser. Nothing to install.
+    <h1 class="display-4 fw-bold mb-3 text-white" style="text-shadow: 0 4px 10px rgba(0,0,0,0.2);">Join the community</h1>
+    <p class="lead text-white mb-4 fw-medium" style="text-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+      Ask questions, share what you're building, and help shape Vulpin.
     </p>
+    <a href="https://discord.gg/ggxSCWmEKHPv"
+       class="btn btn-light btn-lg px-4 text-decoration-none shadow-sm fw-bold text-warning"
+       target="_blank" rel="noopener noreferrer">
+      <i class="bi bi-discord me-2"></i>Join on Discord
+    </a>
   </div>
 </div>
 
 <div class="container py-5">
-  <div class="row">
-    <div class="col-lg-10 mx-auto">
-
-      <p class="text-muted mb-3">Pick a sample, or write your own, then run it.</p>
-      <div id="demoSamples" class="mb-4"></div>
-
-      <div class="playground-panel p-3">
-        <div class="row g-3">
-          <div class="col-md-6">
-            <label for="demoSrc" class="form-label text-white-50 small text-uppercase mb-1">Source</label>
-            <textarea id="demoSrc" class="form-control" spellcheck="false" aria-describedby="demoStatus"></textarea>
-          </div>
-          <div class="col-md-6">
-            <span id="demoOutLabel" class="form-label text-white-50 small text-uppercase mb-1 d-block">Output</span>
-            <div id="demoOut" role="status" aria-live="polite" aria-labelledby="demoOutLabel"><pre></pre></div>
-          </div>
-        </div>
-        <div class="d-flex align-items-center justify-content-between mt-3">
-          <button id="demoRun" type="button" class="btn btn-warning fw-bold text-white px-4">
-            <i class="bi bi-play-fill me-1"></i>Run <span class="text-white-50 small">(Ctrl/Cmd + Enter)</span>
-          </button>
-          <span id="demoStatus" class="text-white-50 small">ready</span>
+  <div class="row g-4 reveal-group">
+    <div class="col-md-4 reveal">
+      <div class="card feature-card h-100">
+        <div class="card-body text-center p-4">
+          <div class="mb-3"><i class="bi bi-chat-dots text-warning" style="font-size: 2.5rem;"></i></div>
+          <h3 class="h5 fw-bold">Discuss</h3>
+          <p class="text-muted mb-0">Trade ideas on language design, ask "how would I..." questions, and get quick answers.</p>
         </div>
       </div>
-
-      <p class="text-muted small mt-3">
-        This playground runs a JavaScript port of the Vulpin interpreter for instant feedback in the browser.
-        It supports the full command set documented on the <a href="docs.html" class="text-warning text-decoration-none fw-bold">docs page</a>.
-      </p>
-
+    </div>
+    <div class="col-md-4 reveal">
+      <div class="card feature-card h-100">
+        <div class="card-body text-center p-4">
+          <div class="mb-3"><i class="bi bi-bug text-warning" style="font-size: 2.5rem;"></i></div>
+          <h3 class="h5 fw-bold">Report bugs</h3>
+          <p class="text-muted mb-0">Found something broken? Open an issue on <a href="https://github.com/vulpin-lang/vulpin/issues" class="text-warning text-decoration-none fw-bold">GitHub</a> and we'll take a look.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 reveal">
+      <div class="card feature-card h-100">
+        <div class="card-body text-center p-4">
+          <div class="mb-3"><i class="bi bi-code-slash text-warning" style="font-size: 2.5rem;"></i></div>
+          <h3 class="h5 fw-bold">Contribute</h3>
+          <p class="text-muted mb-0">Vulpin is MIT licensed. Pull requests, docs fixes, and new sample programs are all welcome.</p>
+        </div>
+      </div>
     </div>
   </div>
+
+  <p class="text-center text-muted mt-5 reveal">
+    Already have something running? Show it off in the <a href="playground.html" class="text-warning text-decoration-none fw-bold">playground</a> and share the source with the community.
+  </p>
 </div>
 
 </main>
@@ -127,7 +137,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 <script src="site.js"></script>
-<script type="module" src="scene.js"></script>
-<script type="module" src="demo.js"></script>
+<script src="motion.js"></script>
+
 </body>
 </html>
