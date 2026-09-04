@@ -1,0 +1,531 @@
+/* ==========================================================================
+   Vulpin site — shared styles
+   Vulpin means "of the fox" — the palette and motifs lean into that:
+   amber/rust fox coloring, a deep pine accent for contrast, and a
+   hand-drawn signature mark instead of a generic hero graphic.
+   ========================================================================== */
+
+:root {
+  --v-orange-1: #ff8c00;
+  --v-orange-2: #ffa500;
+  --v-orange-3: #ffbc3f;
+  --v-rust: #c85a1e;
+  --v-pine: #2f3d2a;
+  --v-ink: #2b1a06;
+  --v-ink-soft: #6b5636;
+  --v-cream: #fff9f0;
+  --v-paper: #fffaf2;
+  --v-gradient: linear-gradient(135deg, var(--v-orange-1), var(--v-orange-2));
+  --v-font-display: "Space Grotesk", "Segoe UI", sans-serif;
+  --v-font-mono: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  padding-top: 100px;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  color: var(--v-ink);
+  background: var(--v-paper);
+  position: relative;
+}
+
+/* A faint paper grain over the whole site — cheap (one static image,
+   no animation) but it's the difference between "template" and "made". */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2000;
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+@media (max-width: 575.98px) {
+  body { padding-top: 86px; }
+}
+
+h1, h2, h3, h4, h5, .navbar-brand {
+  font-family: var(--v-font-display);
+}
+
+code, pre, .font-mono {
+  font-family: var(--v-font-mono);
+}
+
+a.text-warning, .text-warning {
+  color: var(--v-orange-1) !important;
+}
+
+.bg-orange { background-color: var(--v-orange-1); }
+.bg-torange { background-color: var(--v-orange-3); }
+
+/* ---------- Navbar ---------- */
+#mainNavbar {
+  background: transparent;
+  padding: 1.5rem 0;
+  transition: background 0.4s ease, padding 0.4s ease, margin 0.4s ease,
+              width 0.4s ease, border-radius 0.4s ease, box-shadow 0.4s ease;
+}
+
+#mainNavbar.navbar-scrolled {
+  background: var(--v-gradient);
+  padding: 0.5rem 0;
+  margin: 0.5rem auto;
+  width: 90%;
+  max-width: 1200px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);
+}
+
+.navbar-logo {
+  height: 32px;
+  width: auto;
+  max-height: 32px;
+  object-fit: contain;
+  transition: height 0.4s ease, max-height 0.4s ease;
+}
+
+.navbar-scrolled .navbar-logo {
+  height: 24px !important;
+  max-height: 24px !important;
+}
+
+.brand-paren {
+  color: var(--v-orange-1);
+  font-family: var(--v-font-mono);
+  font-weight: 500;
+}
+
+.navbar-scrolled .brand-paren {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+#mainNavbar .nav-link {
+  position: relative;
+  color: var(--v-ink);
+  background: transparent;
+  transition: color 0.3s ease, background 0.3s ease;
+}
+
+#mainNavbar.navbar-scrolled .nav-link,
+#mainNavbar.navbar-scrolled .navbar-brand {
+  color: #fff;
+}
+
+/* Animated underline instead of a flat highlight fill — small, but it's
+   the kind of detail that makes navigation feel deliberate. */
+#mainNavbar .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 2px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+  opacity: 0.85;
+}
+
+#mainNavbar .nav-link:hover::after,
+#mainNavbar .nav-link.active::after {
+  transform: scaleX(1);
+}
+
+#mainNavbar.navbar-scrolled .navbar-toggler-icon {
+  filter: invert(1);
+}
+
+/* Mobile: the collapsed menu drops down over page content, so it needs
+   its own solid background at all times (not just once scrolled) to
+   stay readable. */
+@media (max-width: 575.98px) {
+  #navbarNav.show,
+  #navbarNav.collapsing {
+    background: var(--v-cream);
+    margin: 0.5rem -0.25rem 0;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(43, 26, 6, 0.12);
+  }
+
+  #navbarNav.show .nav-link,
+  #navbarNav.collapsing .nav-link {
+    color: var(--v-ink) !important;
+    background: transparent !important;
+  }
+
+  #navbarNav.show .nav-link.active,
+  #navbarNav.collapsing .nav-link.active {
+    background: rgba(255, 140, 0, 0.14) !important;
+  }
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--v-gradient);
+  margin-top: 2rem;
+  border-radius: 18px;
+  isolation: isolate;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.05);
+  z-index: 0;
+}
+
+/* Soft drifting light — an ambient, "breathing" background instead of a
+   static gradient. Pure CSS, compositor-only (transform/opacity), so it
+   costs nothing while sitting idle off-screen. */
+.hero-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform;
+}
+
+.hero-blob-a {
+  width: 46vw;
+  max-width: 420px;
+  height: 46vw;
+  max-height: 420px;
+  top: -14%;
+  left: -10%;
+  background: radial-gradient(circle, #fff2da 0%, transparent 72%);
+  opacity: 0.65;
+  animation: v-drift-a 17s ease-in-out infinite;
+}
+
+.hero-blob-b {
+  width: 34vw;
+  max-width: 320px;
+  height: 34vw;
+  max-height: 320px;
+  bottom: -16%;
+  right: -8%;
+  background: radial-gradient(circle, #ffdca6 0%, transparent 72%);
+  opacity: 0.6;
+  animation: v-drift-b 21s ease-in-out infinite;
+}
+
+@keyframes v-drift-a {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(4%, 5%) scale(1.08); }
+}
+@keyframes v-drift-b {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-5%, -4%) scale(1.05); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-blob { animation: none; }
+}
+
+/* Woodland ridge silhouette along the bottom of every hero — a small,
+   consistent signature shape instead of a flat rectangle. */
+.hero-ridge {
+  position: absolute;
+  left: -2%;
+  right: -2%;
+  bottom: -1px;
+  width: 104%;
+  height: 15%;
+  min-height: 26px;
+  z-index: 1;
+  opacity: 0.16;
+}
+.hero-ridge path { fill: #000; }
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+/* Signature mark: a small original line-drawn fox motif that draws
+   itself in once, on load, on the homepage hero only. Progressive
+   enhancement — fully visible with no JS, animated with it. */
+.hero-fox-mark {
+  position: absolute;
+  z-index: 1;
+  right: 4%;
+  bottom: -6%;
+  width: clamp(160px, 26vw, 320px);
+  height: auto;
+  opacity: 0.5;
+  pointer-events: none;
+}
+.hero-fox-mark path {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 900;
+  stroke-dashoffset: 0;
+}
+.hero-fox-mark.js-animate path { stroke-dashoffset: 900; }
+.hero-fox-mark.js-drawn path {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1.8s cubic-bezier(.22,.61,.36,1);
+}
+.hero-fox-mark.js-drawn path:nth-child(2) { transition-delay: .15s; }
+.hero-fox-mark.js-drawn path:nth-child(3) { transition-delay: .3s; }
+.hero-fox-mark.js-drawn path:nth-child(4) { transition-delay: .45s; }
+
+/* Shrink hero heights on small screens: keeps content within reach of a
+   thumb scroll and keeps the ambient blobs cheap to paint. */
+@media (max-width: 575.98px) {
+  .hero[style*="60vh"] { min-height: 44vh !important; }
+  .hero[style*="40vh"] { min-height: 32vh !important; }
+  .hero[style*="35vh"] { min-height: 28vh !important; }
+  .hero[style*="32vh"] { min-height: 26vh !important; }
+  .hero[style*="28vh"] { min-height: 24vh !important; }
+  .hero .display-3 { font-size: clamp(2rem, 10vw, 3rem); }
+  .hero .display-4 { font-size: clamp(1.75rem, 9vw, 2.5rem); }
+  .hero .display-5 { font-size: clamp(1.5rem, 8vw, 2rem); }
+  .hero-fox-mark { opacity: 0.3; }
+}
+
+.hero-badge {
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--v-orange-1);
+  animation: v-badge-in 0.7s ease-out both;
+}
+
+.hero-content h1, .hero-content h2 {
+  animation: v-fade-up 0.7s ease-out both;
+  animation-delay: 0.08s;
+}
+.hero-content p {
+  animation: v-fade-up 0.7s ease-out both;
+  animation-delay: 0.18s;
+}
+.hero-content .d-flex.gap-3,
+.hero-content .d-flex.flex-wrap.gap-3 {
+  animation: v-fade-up 0.7s ease-out both;
+  animation-delay: 0.28s;
+}
+@keyframes v-badge-in {
+  from { opacity: 0; transform: translateY(-8px) scale(0.94); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ---------- Scroll reveal ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-group > *:nth-child(1) { transition-delay: 0ms; }
+.reveal-group > *:nth-child(2) { transition-delay: 90ms; }
+.reveal-group > *:nth-child(3) { transition-delay: 180ms; }
+.reveal-group > *:nth-child(4) { transition-delay: 270ms; }
+.reveal-group > *:nth-child(5) { transition-delay: 360ms; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ---------- Timeline / step list ---------- */
+.step-item {
+  position: relative;
+}
+
+.step-line {
+  position: absolute;
+  left: 25px;
+  top: 50px;
+  bottom: -24px;
+  width: 3px;
+  background: linear-gradient(180deg, var(--v-orange-1), var(--v-orange-2));
+  z-index: -1;
+  transform-origin: top center;
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.step-item.reveal-visible .step-line {
+  clip-path: inset(0 0 0 0);
+}
+
+/* ---------- Cards ---------- */
+/* A rust top rule instead of a uniform drop-shadow on every card — reads
+   less like a stock "SaaS card kit" and ties back to the fox palette. */
+.feature-card {
+  border: 0;
+  border-top: 3px solid var(--v-orange-1);
+  background: var(--v-paper);
+  box-shadow: 0 1px 0 rgba(43, 26, 6, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 1rem 1.75rem rgba(43, 26, 6, 0.1);
+  border-top-color: var(--v-rust);
+}
+
+.sponsor-logo {
+  max-height: 60px;
+  width: auto;
+}
+
+footer.site-footer {
+  color: var(--v-ink-soft);
+}
+
+/* ---------- Buttons ---------- */
+/* A soft light-sweep on hover for primary CTAs only — not applied
+   everywhere, so it still reads as an accent rather than a template
+   default. */
+.btn-light, .btn-warning {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.btn-light::before, .btn-warning::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 20%, rgba(255,255,255,0.55) 45%, transparent 70%);
+  transform: translateX(-120%);
+  z-index: -1;
+}
+.btn-light:hover::before, .btn-warning:hover::before {
+  transform: translateX(120%);
+  transition: transform 0.65s ease;
+}
+
+/* ---------- Terminal caret ---------- */
+.caret {
+  display: inline-block;
+  width: 0.5em;
+  height: 0.9em;
+  margin-left: 0.15em;
+  background: currentColor;
+  vertical-align: -0.1em;
+  animation: v-blink 1.1s steps(1) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .caret { animation: none; opacity: 0.7; }
+}
+@keyframes v-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* ---------- Playground ---------- */
+.playground-panel {
+  background: #12100c;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.playground-panel textarea {
+  background: #0f0d0a;
+  color: #ffe3ad;
+  font-family: var(--v-font-mono);
+  font-size: 0.95rem;
+  border: 0;
+  resize: vertical;
+  min-height: 220px;
+}
+
+.playground-panel textarea:focus {
+  outline: 2px solid var(--v-orange-2);
+  outline-offset: -2px;
+}
+
+#demoOut {
+  background: #0f0d0a;
+  color: #f3f3f3;
+  font-family: var(--v-font-mono);
+  font-size: 0.9rem;
+  min-height: 220px;
+  max-height: 420px;
+  overflow-y: auto;
+  overflow-x: auto;
+  padding: 1rem;
+  margin: 0;
+}
+
+@media (max-width: 767.98px) {
+  .playground-panel textarea { min-height: 160px; }
+  #demoOut { min-height: 160px; max-height: 300px; }
+}
+
+#demoOut pre { margin: 0; white-space: pre-wrap; word-break: break-word; }
+#demoOut .ln { display: block; animation: v-line-in 0.25s ease-out both; }
+@keyframes v-line-in {
+  from { opacity: 0; transform: translateX(-4px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.tc-err { color: #ff8686; }
+.tc-out { color: #ffe3ad; }
+.tc-mut { color: #8a8a8a; }
+
+.chip {
+  background: #fff;
+  border: 1px solid rgba(255, 140, 0, 0.35);
+  color: var(--v-ink);
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.85rem;
+  margin: 0.2rem;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.chip:hover, .chip:focus-visible {
+  background: var(--v-orange-1);
+  border-color: var(--v-orange-1);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* Skip link for keyboard users */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--v-orange-1);
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: 0 0 8px 0;
+  z-index: 2000;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+/* Visible keyboard focus for interactive elements */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--v-orange-1);
+  outline-offset: 2px;
+}
+

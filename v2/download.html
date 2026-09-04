@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Download · Vulpin</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Download the latest Vulpin release for Windows, macOS, Linux, and Android.">
+  <link rel="icon" href="logo.png" type="image/png">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  <!-- Type -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="site.css">
+
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- Navbar -->
+<nav id="mainNavbar" class="navbar navbar-expand-sm fixed-top">
+  <div class="container-fluid px-4">
+    <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
+      <img src="logo.png" alt="Vulpin" class="navbar-logo me-2">
+      <span class="align-middle">Vulpin</span>
+    </a>
+
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item mx-1">
+          <a class="nav-link px-3 py-2 rounded-pill" href="getstarted.html">
+            <i class="bi bi-rocket-takeoff me-1"></i>Get Started
+          </a>
+        </li>
+        <li class="nav-item mx-1">
+          <a class="nav-link px-3 py-2 rounded-pill" href="docs.html">
+            <i class="bi bi-book me-1"></i>Docs
+          </a>
+        </li>
+        <li class="nav-item mx-1">
+          <a class="nav-link px-3 py-2 rounded-pill" href="playground.html">
+            <i class="bi bi-terminal me-1"></i>Playground
+          </a>
+        </li>
+        <li class="nav-item mx-1">
+          <a class="nav-link px-3 py-2 rounded-pill" href="download.html">
+            <i class="bi bi-download me-1"></i>Download
+          </a>
+        </li>
+        <li class="nav-item mx-1">
+          <a class="nav-link px-3 py-2 rounded-pill" href="community.html">
+            <i class="bi bi-people me-1"></i>Community
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+<div class="hero p-5 text-center" style="min-height: 32vh; display: flex; align-items: center; justify-content: center;">
+  <div class="hero-overlay"></div>
+  <canvas class="hero-scene" aria-hidden="true"></canvas>
+
+  <div class="hero-content">
+    <h1 class="display-3 fw-bold mb-3 text-white" style="text-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+      Vulpin
+    </h1>
+    <p class="lead text-white mb-3 fw-medium mx-auto" style="max-width: 600px; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+      Download
+    </p>
+    <p class="lead text-white mb-0" style="font-size: 1.6rem;">
+      <i class="bi bi-windows me-3" title="Windows" aria-label="Windows"></i>
+      <i class="bi bi-apple me-3" title="macOS" aria-label="macOS"></i>
+      <i class="bi bi-ubuntu me-3" title="Linux" aria-label="Linux"></i>
+      <i class="bi bi-android2" title="Android" aria-label="Android"></i>
+    </p>
+  </div>
+</div>
+
+<div class="container py-5">
+  <div class="row">
+    <div class="col-lg-9 mx-auto">
+
+      <h2 class="h4 fw-bold mb-3">Releases</h2>
+      <div class="list-group mb-5">
+        <a href="https://github.com/vulpin-lang/Vulpin/releases/tag/V0.9"
+           class="list-group-item list-group-item-action d-flex align-items-center gap-2"
+           target="_blank" rel="noopener noreferrer">
+          <i class="bi bi-download text-warning"></i>
+          <span class="fw-bold">Source — v0.9</span>
+          <span class="badge bg-warning text-white ms-2">latest</span>
+        </a>
+        <a href="https://github.com/vulpin-lang/Vulpin/releases/tag/V0.8beta"
+           class="list-group-item list-group-item-action d-flex align-items-center gap-2"
+           target="_blank" rel="noopener noreferrer">
+          <i class="bi bi-download text-warning"></i>
+          <span class="fw-bold">Source — v0.8 beta</span>
+        </a>
+        <a href="https://github.com/vulpin-lang/Vulpin/releases/tag/V0.7.5"
+           class="list-group-item list-group-item-action d-flex align-items-center gap-2"
+           target="_blank" rel="noopener noreferrer">
+          <i class="bi bi-download text-warning"></i>
+          <span class="fw-bold">Source — v0.7.5 beta</span>
+        </a>
+        <a href="https://github.com/vulpin-lang/Vulpin/releases/tag/V0.6"
+           class="list-group-item list-group-item-action d-flex align-items-center gap-2"
+           target="_blank" rel="noopener noreferrer">
+          <i class="bi bi-download text-warning"></i>
+          <span class="fw-bold">Source — v0.6</span>
+        </a>
+      </div>
+
+      <h2 class="h4 fw-bold mb-3">Version adoption</h2>
+      <p class="text-muted small">Share of downloads by version family, most recent snapshot.</p>
+      <div class="progress mb-2" style="height: 30px;" role="img" aria-label="v0.9: 45%, v0.7-v0.8: 25%, older versions: 30%">
+        <div class="progress-bar bg-warning text-white" style="width: 45%">v0.9</div>
+        <div class="progress-bar" style="width: 25%; background-color: var(--v-orange-3);">v0.7 – v0.8</div>
+        <div class="progress-bar bg-dark" style="width: 30%">Older</div>
+      </div>
+
+      <p class="text-center mt-5">
+        <a href="getstarted.html" class="text-warning fw-bold text-decoration-none">
+          New here? Start with the setup guide <i class="bi bi-arrow-right-short"></i>
+        </a>
+      </p>
+
+    </div>
+  </div>
+</div>
+
+</main>
+
+<footer class="site-footer text-center py-5">
+  <hr class="w-75 mx-auto mb-4" style="border-color: rgba(255,140,0,0.25);">
+  <p class="mb-1">© 2026 Vulpin Labs. All rights reserved.</p>
+  <p class="small mb-0">
+    <a href="https://github.com/vulpin-lang/vulpin" class="text-warning text-decoration-none"><i class="bi bi-github me-1"></i>GitHub</a>
+    <span class="mx-2">·</span>
+    <a href="https://discord.gg/ggxSCWmEKHPv" class="text-warning text-decoration-none" target="_blank" rel="noopener noreferrer"><i class="bi bi-discord me-1"></i>Discord</a>
+  </p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="site.js"></script>
+<script type="module" src="scene.js"></script>
+
+</body>
+</html>

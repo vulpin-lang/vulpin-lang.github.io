@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Vulpin — a tiny language for tiny programs</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Vulpin is a fast, minimal, open-source programming language for building the smallest possible programs.">
+  <link rel="icon" href="logo.png" type="image/png">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  <!-- Type -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="site.css">
+
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- Navbar -->
+<nav id="mainNavbar" class="navbar navbar-expand-sm fixed-top">
+  <div class="container-fluid px-4">
+    <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
+      <img src="logo.png" alt="Vulpin" class="navbar-logo me-2">
+      <span class="align-middle">Vulpin</span>
+    </a>
+
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item mx-1">
+          <a class="nav-link px-3 py-2 rounded-pill" href="getstarted.html">
+            <i class="bi bi-rocket-takeoff me-1"></i>Get Started
+          </a>
+        </li>
+        <li class="nav-item mx-1">
+          <a class="nav-link px-3 py-2 rounded-pill" href="docs.html">
+            <i class="bi bi-book me-1"></i>Docs
+          </a>
+        </li>
+        <li class="nav-item mx-1">
+          <a class="nav-link px-3 py-2 rounded-pill" href="playground.html">
+            <i class="bi bi-terminal me-1"></i>Playground
+          </a>
+        </li>
+        <li class="nav-item mx-1">
+          <a class="nav-link px-3 py-2 rounded-pill" href="download.html">
+            <i class="bi bi-download me-1"></i>Download
+          </a>
+        </li>
+        <li class="nav-item mx-1">
+          <a class="nav-link px-3 py-2 rounded-pill" href="community.html">
+            <i class="bi bi-people me-1"></i>Community
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+<!-- Hero -->
+<div class="hero p-5 text-center" style="min-height: 60vh; display: flex; align-items: center; justify-content: center;">
+  <div class="hero-overlay"></div>
+  <canvas class="hero-scene" aria-hidden="true"></canvas>
+
+  <div class="hero-content">
+    <span class="badge hero-badge mb-3 px-3 py-2 rounded-pill shadow-sm">
+      Now available — v0.9
+    </span>
+
+    <h1 class="display-3 fw-bold mb-3 text-white" style="text-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+      Vulpin
+    </h1>
+
+    <p class="lead text-white mb-4 fw-medium mx-auto" style="max-width: 600px; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+      A tiny language for your smallest possible programs. Fast, efficient, and open source.
+    </p>
+
+    <div class="d-flex justify-content-center flex-wrap gap-3">
+      <a href="getstarted.html" class="btn btn-light btn-lg px-4 text-decoration-none shadow-lg fw-bold text-warning">
+        Get Started
+      </a>
+      <a href="https://github.com/vulpin-lang/vulpin" class="btn btn-outline-light btn-lg px-4 text-decoration-none">
+        <i class="bi bi-github me-2"></i>GitHub
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Features -->
+<div class="container mt-5 py-5">
+  <div class="row g-4">
+    <div class="col-sm-4">
+      <div class="card feature-card h-100">
+        <div class="card-body text-center p-4">
+          <div class="mb-3"><i class="bi bi-lightning-charge-fill text-warning" style="font-size: 2.5rem;"></i></div>
+          <h3 class="h4 fw-bold">Fast</h3>
+          <p class="text-muted mb-0">Build, run, and compile your programs with blazing speed.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card feature-card h-100">
+        <div class="card-body text-center p-4">
+          <div class="mb-3"><i class="bi bi-box-arrow-in-down-left text-warning" style="font-size: 2.5rem;"></i></div>
+          <h3 class="h4 fw-bold">Smallest Size</h3>
+          <p class="text-muted mb-0">Build your smallest possible programs with ease.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card feature-card h-100">
+        <div class="card-body text-center p-4">
+          <div class="mb-3"><i class="bi bi-laptop text-warning" style="font-size: 2.5rem;"></i></div>
+          <h3 class="h4 fw-bold">Any OS</h3>
+          <p class="text-muted mb-0">Vulpin runs on Windows, macOS, Linux, and Android.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Open Source -->
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <div class="hero card border-0 shadow-lg overflow-hidden" style="min-height: 40vh; display:flex; align-items:center;">
+        <div class="hero-overlay"></div>
+        <canvas class="hero-scene" aria-hidden="true"></canvas>
+
+        <div class="hero-content card-body text-center p-5">
+          <span class="badge hero-badge mb-4 px-3 py-2 rounded-pill shadow-sm">
+            MIT Licensed
+          </span>
+
+          <h2 class="display-5 fw-bold text-white mb-3" style="text-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+            Open source, start to finish
+          </h2>
+
+          <p class="lead text-white mb-4 fw-medium mx-auto" style="max-width: 600px; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            Every part of Vulpin — the interpreter, the docs, this site — is on GitHub. Fork it, file an issue, or send a pull request.
+          </p>
+
+          <div class="d-flex justify-content-center flex-wrap gap-3">
+            <a href="playground.html" class="btn btn-light btn-lg px-4 text-decoration-none shadow-sm fw-bold text-warning">
+              Try it in the browser
+            </a>
+            <a href="https://github.com/vulpin-lang/vulpin" class="btn btn-outline-light btn-lg px-4 text-decoration-none">
+              <i class="bi bi-github me-2"></i>GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Sponsors -->
+<div class="container mt-3 mb-5 py-4">
+  <div class="row g-4 justify-content-center">
+    <div class="col-sm-4">
+      <div class="card feature-card h-100">
+        <div class="card-body text-center p-4">
+          <h3 class="h5 fw-bold mb-3">Sponsor</h3>
+          <a href="https://fluxcast.dev" target="_blank" rel="noopener noreferrer">
+            <img src="fluxcast.png" alt="Fluxcast — hosting sponsor" class="sponsor-logo">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<footer class="site-footer text-center py-5">
+  <hr class="w-75 mx-auto mb-4" style="border-color: rgba(255,140,0,0.25);">
+  <p class="mb-1">© 2026 Vulpin Labs. All rights reserved.</p>
+  <p class="small mb-0">
+    <a href="https://github.com/vulpin-lang/vulpin" class="text-warning text-decoration-none"><i class="bi bi-github me-1"></i>GitHub</a>
+    <span class="mx-2">·</span>
+    <a href="https://discord.gg/ggxSCWmEKHPv" class="text-warning text-decoration-none" target="_blank" rel="noopener noreferrer"><i class="bi bi-discord me-1"></i>Discord</a>
+  </p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="site.js"></script>
+<script type="module" src="scene.js"></script>
+
+</body>
+</html>

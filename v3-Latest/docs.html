@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Docs · Vulpin</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The full Vulpin command reference: output, variables, control flow, functions, and built-ins.">
+  <link rel="icon" href="logo.png" type="image/png">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  <!-- Type -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="site.css">
+
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- Navbar -->
+<nav id="mainNavbar" class="navbar navbar-expand-sm fixed-top">
+  <div class="container-fluid px-4">
+    <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
+      <img src="logo.png" alt="Vulpin" class="navbar-logo me-2">
+      <span class="align-middle">vulpin<span class="brand-paren">()</span></span>
+    </a>
+
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item mx-1">
+          <a class="nav-link px-3 py-2 rounded-pill" href="getstarted.html">
+            <i class="bi bi-rocket-takeoff me-1"></i>Get Started
+          </a>
+        </li>
+        <li class="nav-item mx-1">
+          <a class="nav-link px-3 py-2 rounded-pill" href="docs.html">
+            <i class="bi bi-book me-1"></i>Docs
+          </a>
+        </li>
+        <li class="nav-item mx-1">
+          <a class="nav-link px-3 py-2 rounded-pill" href="playground.html">
+            <i class="bi bi-terminal me-1"></i>Playground
+          </a>
+        </li>
+        <li class="nav-item mx-1">
+          <a class="nav-link px-3 py-2 rounded-pill" href="download.html">
+            <i class="bi bi-download me-1"></i>Download
+          </a>
+        </li>
+        <li class="nav-item mx-1">
+          <a class="nav-link px-3 py-2 rounded-pill" href="community.html">
+            <i class="bi bi-people me-1"></i>Community
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+<div class="hero p-5 text-center" style="min-height: 32vh; display:flex; align-items:center; justify-content:center;">
+  <div class="hero-blob hero-blob-a" aria-hidden="true"></div>
+  <div class="hero-blob hero-blob-b" aria-hidden="true"></div>
+  <div class="hero-overlay"></div>
+  <svg class="hero-ridge" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,120 L0,60 L80,75 L160,30 L260,68 L360,20 L460,64 L560,26 L660,70 L760,34 L860,66 L960,22 L1060,60 L1200,40 L1200,120 Z"></path>
+  </svg>
+  <div class="hero-content">
+    <h1 class="display-4 fw-bold mb-2 text-white" style="text-shadow: 0 4px 10px rgba(0,0,0,0.2);">Docs</h1>
+    <p class="lead text-white mb-0 fw-medium" style="text-shadow: 0 2px 4px rgba(0,0,0,0.1);">The full command reference is short — that's the point.</p>
+  </div>
+</div>
+
+<div class="container py-5">
+  <div class="row">
+    <div class="col-lg-9 mx-auto">
+
+      <p class="text-muted">
+        Vulpin programs are one command per line, each starting with a single letter or symbol.
+        Every command below is what the interpreter actually runs — this table is generated
+        from the same rules that power the <a href="playground.html" class="text-warning text-decoration-none fw-bold">playground</a>,
+        so it won't drift out of date.
+      </p>
+
+      <div class="reveal">
+      <h2 class="h4 fw-bold mt-5 mb-3">Output &amp; input</h2>
+      <div class="table-responsive">
+        <table class="table align-middle">
+          <thead><tr><th style="width: 90px;">Cmd</th><th>Meaning</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td><code>G</code></td><td>Print a value, with a newline</td><td><code>G "Hello, world!"</code></td></tr>
+            <tr><td><code>g</code> / <code>P</code></td><td>Print without a newline</td><td><code>g "loading..."</code></td></tr>
+            <tr><td><code>K</code></td><td>Read typed input into a variable</td><td><code>K age "how old? " I</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+
+      <div class="reveal">
+      <h2 class="h4 fw-bold mt-5 mb-3">Variables</h2>
+      <div class="table-responsive">
+        <table class="table align-middle">
+          <thead><tr><th style="width: 90px;">Cmd</th><th>Meaning</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td><code>E</code></td><td>Assign a variable</td><td><code>E x = 3</code></td></tr>
+            <tr><td><code>A</code></td><td>Add to (and create) a variable</td><td><code>A "x" + 2</code></td></tr>
+            <tr><td><code>S</code></td><td>Replace text in a string variable</td><td><code>S "name" "Vul" "VUL"</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+
+      <div class="reveal">
+      <h2 class="h4 fw-bold mt-5 mb-3">Control flow</h2>
+      <div class="table-responsive">
+        <table class="table align-middle">
+          <thead><tr><th style="width: 90px;">Cmd</th><th>Meaning</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td><code>? : ;</code></td><td>If / else / end if</td><td><code>? age &gt;= 18<br>&nbsp;&nbsp;G "yes"<br>:<br>&nbsp;&nbsp;G "no"<br>;</code></td></tr>
+            <tr><td><code>@ &amp;</code></td><td>While loop / end loop</td><td><code>@ x &lt; 4<br>&nbsp;&nbsp;G x<br>&amp;</code></td></tr>
+            <tr><td><code>O &amp;</code></td><td>For loop over a range, optional step</td><td><code>O i 1 5<br>&nbsp;&nbsp;G i<br>&amp;</code></td></tr>
+            <tr><td><code>W V N Z</code></td><td>Switch / case / default / end switch</td><td><code>W fruit<br>V "apple"<br>&nbsp;&nbsp;G "red"<br>N<br>&nbsp;&nbsp;G "?"<br>Z</code></td></tr>
+            <tr><td><code>J L</code></td><td>Jump to / define a label</td><td><code>J end<br>L end</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+
+      <div class="reveal">
+      <h2 class="h4 fw-bold mt-5 mb-3">Functions &amp; errors</h2>
+      <div class="table-responsive">
+        <table class="table align-middle">
+          <thead><tr><th style="width: 90px;">Cmd</th><th>Meaning</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td><code>F R ~</code></td><td>Define a function / return / end function</td><td><code>F add(a, b)<br>&nbsp;&nbsp;R a + b<br>~</code></td></tr>
+            <tr><td><code>T C Y</code></td><td>Try / catch / end try</td><td><code>T<br>&nbsp;&nbsp;G 10 / 0<br>C "err"<br>&nbsp;&nbsp;G err<br>Y</code></td></tr>
+            <tr><td><code>Q</code></td><td>Quit the program cleanly</td><td><code>Q</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+
+      <div class="reveal">
+      <h2 class="h4 fw-bold mt-5 mb-3">Strings &amp; built-ins</h2>
+      <p class="text-muted mb-2">Shortcuts on a string variable:</p>
+      <ul class="text-muted">
+        <li><code>s.U</code> upper case, <code>s.L</code> lower case, <code>s.T</code> title case, <code>s.C</code> character code</li>
+      </ul>
+      <p class="text-muted mb-2">Built-in functions:</p>
+      <p class="text-muted">
+        <code>abs</code>, <code>floor</code>, <code>ceil</code>, <code>round</code>, <code>sqrt</code>, <code>pow</code>,
+        <code>len</code>, <code>upper</code>, <code>lower</code>, <code>title</code>, <code>char</code>, <code>ord</code>,
+        <code>rand</code>, <code>min</code>, <code>max</code>
+      </p>
+      </div>
+
+      <div class="text-center mt-5 reveal">
+        <a href="playground.html" class="btn btn-warning btn-lg text-white fw-bold px-4">
+          <i class="bi bi-play-fill me-1"></i>Try these in the playground
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</main>
+
+<footer class="site-footer text-center py-5">
+  <hr class="w-75 mx-auto mb-4" style="border-color: rgba(255,140,0,0.25);">
+  <p class="mb-1">© 2026 Vulpin Labs. All rights reserved.</p>
+  <p class="small mb-0">
+    <a href="https://github.com/vulpin-lang/vulpin" class="text-warning text-decoration-none"><i class="bi bi-github me-1"></i>GitHub</a>
+    <span class="mx-2">·</span>
+    <a href="https://discord.gg/ggxSCWmEKHPv" class="text-warning text-decoration-none" target="_blank" rel="noopener noreferrer"><i class="bi bi-discord me-1"></i>Discord</a>
+  </p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="site.js"></script>
+<script src="motion.js"></script>
+
+</body>
+</html>
