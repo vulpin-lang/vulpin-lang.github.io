@@ -6,36 +6,79 @@ export const SAMPLES = [
     src: `G "Hello World!"`,
   },
   {
+    name: 'multiline text',
+    src: `G '''
+Vulpin is a tiny language
+for tiny programs.
+'''`,
+  },
+  {
+    name: 'inline commands',
+    src: `a = 5; ? a == 5; G "yes it is!";`,
+  },
+  {
     name: 'math',
-    src: `G 5 + 3
+    src: `G 7 / 2
+G 7.0 / 2
 G (2 + 3) * 4
 G -3 + 10`,
   },
   {
     name: 'variables',
-    src: `name = "Vul"
-age = 21
-G "Hi, " + name + ", age " + age`,
+    src: `x = 10
+name = "Vul"
+G name
+G x
+D "x"`,
   },
   {
     name: 'add & replace',
     src: `E x = 3
-A "x" + 2
+A"x"+2
 G x
-S "name" "Vul" "VUL"
+S"name""Vul""VUL"
 G name`,
   },
   {
-    name: 'string helpers',
-    src: `E s = "hi there"
-G s.U
-G s.T
-G s.C
-G len(s)`,
+    name: 'string shortcuts',
+    src: `msg = "  hi there  "
+G ($msg).U
+G msg.T
+G msg.S
+G len(msg)`,
+  },
+  {
+    name: 'lists',
+    src: `l = [1, 2, 3]
+G l
+G l[0]
+G l[-1]
+l[0] = 99
+push(l, 4)
+G l
+G pop(l)`,
+  },
+  {
+    name: 'dicts',
+    src: `d = {"name": "Vul", "age": 1}
+d["home"] = "forest"
+G d
+G d["name"]
+G keys(d)
+G values(d)`,
+  },
+  {
+    name: 'sets',
+    src: `s = {1, 2, 3}
+G s + {4}
+G s - {2}
+? 2 in s
+  G "2 is in the set"
+:`,
   },
   {
     name: 'if / else',
-    src: `E age = 17
+    src: `age = 17
 ? age >= 18
   G "you can vote"
 :
@@ -43,16 +86,41 @@ G len(s)`,
 ;`,
   },
   {
+    name: 'comparisons',
+    src: `score = 85
+# m means >=, l means <=
+? score m 90
+  G "A"
+:
+? score m 80
+  G "B"
+:
+  G "C"
+;
+;`,
+  },
+  {
+    name: 'else-if chain',
+    src: `num = 3
+secret = 5
+? num = secret
+  G "Correct!"
+  Q
+:? num < secret G"Higher"
+: G"Lower"
+;`,
+  },
+  {
     name: 'while loop',
-    src: `E x = 0
+    src: `x = 0
 @ x < 4
   G x
-  E x = x + 1
+  x = x + 1
 &`,
   },
   {
     name: 'for-range',
-    src: `O i 1 5
+    src: `O i 0 5
   G i
 &`,
   },
@@ -76,31 +144,32 @@ Z`,
   },
   {
     name: 'functions',
-    src: `F add(a, b)
+    src: `F add (a, b)
   R a + b
 ~
 G add(3, 4)
 
-F greet(name)
+F sayHi(name)
   G "Hello " + name
 ~
-greet("World")`,
+sayHi("World")`,
   },
   {
     name: 'recursion',
-    src: `F fact(n)
+    src: `F fact (n)
   ? n <= 1
     R 1
   ;
-  R n * fact(n - 1)
+  R n * fact($n - 1)
 ~
 G fact(6)`,
   },
   {
     name: 'jumps',
-    src: `J end
-G "Skipped"
-L end
+    src: `? 2 > 3 J done
+G "2 is not > 3, so this runs"
+G "see you"
+L done
 G "Done"`,
   },
   {
@@ -115,8 +184,28 @@ Y
 G "Continues..."`,
   },
   {
+    name: 'modules',
+    src: `U"math"
+G "Result: " + math.sqrt(16)`,
+  },
+  {
+    name: 'rand module',
+    src: `U"random"
+r = random.randint(1, 10)
+? r m 5
+  G r + " is 5 or more"
+:
+  G r + " is under 5"
+;`,
+  },
+  {
+    name: 'os & shell',
+    src: `U"os"
+os.system("echo Hello from Vulpin")`,
+  },
+  {
     name: 'fizzbuzz',
-    src: `O i 1 15
+    src: `O i 1 16
   ? i % 15 == 0
     G "fizzbuzz"
   :
@@ -137,6 +226,8 @@ G "Continues..."`,
     src: `G abs(-7)
 G pow(2, 10)
 G sqrt(81)
+G min(3, 7)
+G max(3, 7)
 G len("vulpin")
 G rand(100)`,
   },

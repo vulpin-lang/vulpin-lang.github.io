@@ -27,7 +27,7 @@
   <div class="container-fluid px-4">
     <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
       <img src="logo.png" alt="Vulpin" class="navbar-logo me-2">
-      <span class="align-middle">vulpin<span class="brand-paren">()</span></span>
+      <span class="align-middle">vulpin</span>
     </a>
 
     <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,12 +68,7 @@
 
 <main id="main">
 <div class="hero p-5 text-center" style="min-height: 32vh; display:flex; align-items:center; justify-content:center;">
-  <div class="hero-blob hero-blob-a" aria-hidden="true"></div>
-  <div class="hero-blob hero-blob-b" aria-hidden="true"></div>
   <div class="hero-overlay"></div>
-  <svg class="hero-ridge" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
-    <path d="M0,120 L0,60 L80,75 L160,30 L260,68 L360,20 L460,64 L560,26 L660,70 L760,34 L860,66 L960,22 L1060,60 L1200,40 L1200,120 Z"></path>
-  </svg>
   <div class="hero-content">
     <h1 class="display-4 fw-bold mb-2 text-white" style="text-shadow: 0 4px 10px rgba(0,0,0,0.2);">Docs</h1>
     <p class="lead text-white mb-0 fw-medium" style="text-shadow: 0 2px 4px rgba(0,0,0,0.1);">The full command reference is short — that's the point.</p>
@@ -86,82 +81,118 @@
 
       <p class="text-muted">
         Vulpin programs are one command per line, each starting with a single letter or symbol.
-        Every command below is what the interpreter actually runs — this table is generated
-        from the same rules that power the <a href="playground.html" class="text-warning text-decoration-none fw-bold">playground</a>,
-        so it won't drift out of date.
+        Spaces are optional — <code>G"hi"</code> and <code>G "hi"</code> are the same — and you can
+        pack several commands on one line with <code>;</code>.
+        Every command below is what the interpreter actually runs — this is the same reference you can
+        try live in the <a href="playground.html" class="text-warning text-decoration-none fw-bold">playground</a>.
       </p>
 
-      <div class="reveal">
       <h2 class="h4 fw-bold mt-5 mb-3">Output &amp; input</h2>
       <div class="table-responsive">
         <table class="table align-middle">
           <thead><tr><th style="width: 90px;">Cmd</th><th>Meaning</th><th>Example</th></tr></thead>
           <tbody>
-            <tr><td><code>G</code></td><td>Print a value, with a newline</td><td><code>G "Hello, world!"</code></td></tr>
+            <tr><td><code>G</code></td><td>Print a value, with a newline</td><td><code>G"Hello World!"</code></td></tr>
             <tr><td><code>g</code> / <code>P</code></td><td>Print without a newline</td><td><code>g "loading..."</code></td></tr>
-            <tr><td><code>K</code></td><td>Read typed input into a variable</td><td><code>K age "how old? " I</code></td></tr>
+            <tr><td><code>G + '''</code></td><td>Print a multi-line text block</td><td><code>G '''<br>line one<br>line two<br>'''</code></td></tr>
+            <tr><td><code>K</code></td><td>Read typed input into a variable</td><td><code>Knum"Guess (1-10): ""I"</code></td></tr>
           </tbody>
         </table>
       </div>
-      </div>
+      <p class="text-muted mb-2">The letter at the end of <code>K</code> is the input type:</p>
+      <p class="text-muted">
+        <code>I</code> int, <code>F</code> float, <code>N</code> number, <code>L</code> letter,
+        <code>W</code> word, <code>E</code> lowercase, <code>U</code> uppercase, <code>A</code> words with spaces,
+        <code>P</code> password-ish (word with digits)
+      </p>
 
-      <div class="reveal">
       <h2 class="h4 fw-bold mt-5 mb-3">Variables</h2>
       <div class="table-responsive">
         <table class="table align-middle">
           <thead><tr><th style="width: 90px;">Cmd</th><th>Meaning</th><th>Example</th></tr></thead>
           <tbody>
-            <tr><td><code>E</code></td><td>Assign a variable</td><td><code>E x = 3</code></td></tr>
-            <tr><td><code>A</code></td><td>Add to (and create) a variable</td><td><code>A "x" + 2</code></td></tr>
-            <tr><td><code>S</code></td><td>Replace text in a string variable</td><td><code>S "name" "Vul" "VUL"</code></td></tr>
+            <tr><td><code>=</code></td><td>Assign a variable — no command letter needed</td><td><code>x = 10</code></td></tr>
+            <tr><td><code>E</code></td><td>Assign with the classic form</td><td><code>E x = 3</code></td></tr>
+            <tr><td><code>A</code></td><td>Add to (and create) a variable</td><td><code>A"x"+5</code></td></tr>
+            <tr><td><code>S</code></td><td>Replace text in a string variable</td><td><code>S"name""Vul""VUL"</code></td></tr>
+            <tr><td><code>D</code></td><td>Delete a variable (a number delays instead)</td><td><code>D"x"</code></td></tr>
           </tbody>
         </table>
       </div>
-      </div>
+      <p class="text-muted">
+        Note on division: <code>7/2</code> is <code>3</code> — integer division truncates toward zero.
+        Write <code>7.0/2</code> when you want <code>3.5</code>.
+      </p>
 
-      <div class="reveal">
+      <h2 class="h4 fw-bold mt-5 mb-3">Lists, Dicts &amp; Sets</h2>
+      <div class="table-responsive">
+        <table class="table align-middle">
+          <thead><tr><th style="width: 90px;">Cmd</th><th>Meaning</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td><code>[]</code></td><td>List — index with <code>[]</code>, negative index counts from the end</td><td><code>l = [1, 2, 3]<br>l[0] = 99</code></td></tr>
+            <tr><td><code>{}</code></td><td>Dict — key : value pairs</td><td><code>d = {"a": 1}<br>d["c"] = 3</code></td></tr>
+            <tr><td><code>{}</code></td><td>Set — unique values; <code>+</code> union, <code>-</code> difference</td><td><code>s = {1, 2, 3}<br>s + {4}</code></td></tr>
+            <tr><td><code>in</code></td><td>Membership test</td><td><code>? 2 in s</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-muted mb-2">Built-ins for containers: <code>len</code>, <code>push</code>, <code>pop</code>, <code>keys</code>, <code>values</code>. Empty <code>{}</code> is always a Dict.</p>
+
       <h2 class="h4 fw-bold mt-5 mb-3">Control flow</h2>
       <div class="table-responsive">
         <table class="table align-middle">
           <thead><tr><th style="width: 90px;">Cmd</th><th>Meaning</th><th>Example</th></tr></thead>
           <tbody>
-            <tr><td><code>? : ;</code></td><td>If / else / end if</td><td><code>? age &gt;= 18<br>&nbsp;&nbsp;G "yes"<br>:<br>&nbsp;&nbsp;G "no"<br>;</code></td></tr>
-            <tr><td><code>@ &amp;</code></td><td>While loop / end loop</td><td><code>@ x &lt; 4<br>&nbsp;&nbsp;G x<br>&amp;</code></td></tr>
-            <tr><td><code>O &amp;</code></td><td>For loop over a range, optional step</td><td><code>O i 1 5<br>&nbsp;&nbsp;G i<br>&amp;</code></td></tr>
+            <tr><td><code>? : ;</code></td><td>If / else-if or else / end if — <code>?</code> also takes a one-line command</td><td><code>? num &lt; secret G"Higher"<br>: G"Lower"<br>;</code></td></tr>
+            <tr><td><code>? J</code></td><td>Conditional jump</td><td><code>? x &gt; 3 J skip</code></td></tr>
+            <tr><td><code>m</code> / <code>l</code></td><td>Comparison shorthands: <code>m</code> means &gt;=, <code>l</code> means &lt;=</td><td><code>? score m 90</code></td></tr>
+            <tr><td><code>@ &amp;</code></td><td>While loop / end loop; <code>@1</code> loops forever</td><td><code>@ x &lt; 4<br>&nbsp;&nbsp;G x<br>&amp;</code></td></tr>
+            <tr><td><code>O &amp;</code></td><td>For loop over a range; the end value is exclusive, negative step counts down</td><td><code>O i 0 5<br>&nbsp;&nbsp;G i<br>&amp;</code></td></tr>
             <tr><td><code>W V N Z</code></td><td>Switch / case / default / end switch</td><td><code>W fruit<br>V "apple"<br>&nbsp;&nbsp;G "red"<br>N<br>&nbsp;&nbsp;G "?"<br>Z</code></td></tr>
             <tr><td><code>J L</code></td><td>Jump to / define a label</td><td><code>J end<br>L end</code></td></tr>
           </tbody>
         </table>
       </div>
-      </div>
 
-      <div class="reveal">
       <h2 class="h4 fw-bold mt-5 mb-3">Functions &amp; errors</h2>
       <div class="table-responsive">
         <table class="table align-middle">
           <thead><tr><th style="width: 90px;">Cmd</th><th>Meaning</th><th>Example</th></tr></thead>
           <tbody>
-            <tr><td><code>F R ~</code></td><td>Define a function / return / end function</td><td><code>F add(a, b)<br>&nbsp;&nbsp;R a + b<br>~</code></td></tr>
+            <tr><td><code>F R ~</code></td><td>Define a function / return / end function; <code>$name</code> reads a variable inside expressions</td><td><code>F fact (n)<br>&nbsp;&nbsp;? n &lt;= 1<br>&nbsp;&nbsp;&nbsp;&nbsp;R 1<br>&nbsp;&nbsp;;<br>&nbsp;&nbsp;R n * fact($n - 1)<br>~</code></td></tr>
             <tr><td><code>T C Y</code></td><td>Try / catch / end try</td><td><code>T<br>&nbsp;&nbsp;G 10 / 0<br>C "err"<br>&nbsp;&nbsp;G err<br>Y</code></td></tr>
             <tr><td><code>Q</code></td><td>Quit the program cleanly</td><td><code>Q</code></td></tr>
           </tbody>
         </table>
       </div>
-      </div>
 
-      <div class="reveal">
+      <h2 class="h4 fw-bold mt-5 mb-3">Imports</h2>
+      <div class="table-responsive">
+        <table class="table align-middle">
+          <thead><tr><th style="width: 90px;">Cmd</th><th>Meaning</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td><code>U</code></td><td>Import a module: <code>math</code>, <code>random</code>, <code>os</code></td><td><code>U"math"<br>G math.sqrt(16)</code></td></tr>
+            <tr><td><code>o</code></td><td>Run a shell command (echo only in the browser sandbox)</td><td><code>o"echo hi"</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-muted">
+        Handy modules: <code>math.sqrt</code>, <code>math.pow</code>, <code>random.randint(1, 10)</code>,
+        <code>os.system("echo hi")</code>. Latest release: <strong>V1.0.3</strong> — check your install with <code>vulpin version</code>.
+      </p>
+
       <h2 class="h4 fw-bold mt-5 mb-3">Strings &amp; built-ins</h2>
-      <p class="text-muted mb-2">Shortcuts on a string variable:</p>
+      <p class="text-muted mb-2">Shortcuts on a string (also on <code>$var</code> references):</p>
       <ul class="text-muted">
-        <li><code>s.U</code> upper case, <code>s.L</code> lower case, <code>s.T</code> title case, <code>s.C</code> character code</li>
+        <li><code>$msg.U</code> upper case, <code>msg.L</code> lower case, <code>msg.S</code> strip, <code>msg.T</code> title case, <code>msg.C</code> capitalize</li>
       </ul>
       <p class="text-muted mb-2">Built-in functions:</p>
       <p class="text-muted">
         <code>abs</code>, <code>floor</code>, <code>ceil</code>, <code>round</code>, <code>sqrt</code>, <code>pow</code>,
-        <code>len</code>, <code>upper</code>, <code>lower</code>, <code>title</code>, <code>char</code>, <code>ord</code>,
+        <code>len</code>, <code>push</code>, <code>pop</code>, <code>keys</code>, <code>values</code>,
+        <code>upper</code>, <code>lower</code>, <code>title</code>, <code>char</code>, <code>ord</code>,
         <code>rand</code>, <code>min</code>, <code>max</code>
       </p>
-      </div>
 
       <div class="text-center mt-5 reveal">
         <a href="playground.html" class="btn btn-warning btn-lg text-white fw-bold px-4">
@@ -187,7 +218,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 <script src="site.js"></script>
-<script src="motion.js"></script>
 
 </body>
 </html>
