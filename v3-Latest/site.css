@@ -195,108 +195,13 @@ a.text-warning, .text-warning {
   z-index: 0;
 }
 
-/* Soft drifting light — an ambient, "breathing" background instead of a
-   static gradient. Pure CSS, compositor-only (transform/opacity), so it
-   costs nothing while sitting idle off-screen. */
-.hero-blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(50px);
-  pointer-events: none;
-  z-index: 0;
-  will-change: transform;
-}
-
-.hero-blob-a {
-  width: 46vw;
-  max-width: 420px;
-  height: 46vw;
-  max-height: 420px;
-  top: -14%;
-  left: -10%;
-  background: radial-gradient(circle, #fff2da 0%, transparent 72%);
-  opacity: 0.65;
-  animation: v-drift-a 17s ease-in-out infinite;
-}
-
-.hero-blob-b {
-  width: 34vw;
-  max-width: 320px;
-  height: 34vw;
-  max-height: 320px;
-  bottom: -16%;
-  right: -8%;
-  background: radial-gradient(circle, #ffdca6 0%, transparent 72%);
-  opacity: 0.6;
-  animation: v-drift-b 21s ease-in-out infinite;
-}
-
-@keyframes v-drift-a {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(4%, 5%) scale(1.08); }
-}
-@keyframes v-drift-b {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(-5%, -4%) scale(1.05); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero-blob { animation: none; }
-}
-
-/* Woodland ridge silhouette along the bottom of every hero — a small,
-   consistent signature shape instead of a flat rectangle. */
-.hero-ridge {
-  position: absolute;
-  left: -2%;
-  right: -2%;
-  bottom: -1px;
-  width: 104%;
-  height: 15%;
-  min-height: 26px;
-  z-index: 1;
-  opacity: 0.16;
-}
-.hero-ridge path { fill: #000; }
-
 .hero-content {
   position: relative;
   z-index: 2;
   width: 100%;
 }
 
-/* Signature mark: a small original line-drawn fox motif that draws
-   itself in once, on load, on the homepage hero only. Progressive
-   enhancement — fully visible with no JS, animated with it. */
-.hero-fox-mark {
-  position: absolute;
-  z-index: 1;
-  right: 4%;
-  bottom: -6%;
-  width: clamp(160px, 26vw, 320px);
-  height: auto;
-  opacity: 0.5;
-  pointer-events: none;
-}
-.hero-fox-mark path {
-  fill: none;
-  stroke: #fff;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 900;
-  stroke-dashoffset: 0;
-}
-.hero-fox-mark.js-animate path { stroke-dashoffset: 900; }
-.hero-fox-mark.js-drawn path {
-  stroke-dashoffset: 0;
-  transition: stroke-dashoffset 1.8s cubic-bezier(.22,.61,.36,1);
-}
-.hero-fox-mark.js-drawn path:nth-child(2) { transition-delay: .15s; }
-.hero-fox-mark.js-drawn path:nth-child(3) { transition-delay: .3s; }
-.hero-fox-mark.js-drawn path:nth-child(4) { transition-delay: .45s; }
-
-/* Shrink hero heights on small screens: keeps content within reach of a
-   thumb scroll and keeps the ambient blobs cheap to paint. */
+/* Shrink hero heights on small screens */
 @media (max-width: 575.98px) {
   .hero[style*="60vh"] { min-height: 44vh !important; }
   .hero[style*="40vh"] { min-height: 32vh !important; }
@@ -306,7 +211,6 @@ a.text-warning, .text-warning {
   .hero .display-3 { font-size: clamp(2rem, 10vw, 3rem); }
   .hero .display-4 { font-size: clamp(1.75rem, 9vw, 2.5rem); }
   .hero .display-5 { font-size: clamp(1.5rem, 8vw, 2rem); }
-  .hero-fox-mark { opacity: 0.3; }
 }
 
 .hero-badge {
@@ -333,24 +237,8 @@ a.text-warning, .text-warning {
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* ---------- Scroll reveal ---------- */
-.reveal {
-  opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.reveal.reveal-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.reveal-group > *:nth-child(1) { transition-delay: 0ms; }
-.reveal-group > *:nth-child(2) { transition-delay: 90ms; }
-.reveal-group > *:nth-child(3) { transition-delay: 180ms; }
-.reveal-group > *:nth-child(4) { transition-delay: 270ms; }
-.reveal-group > *:nth-child(5) { transition-delay: 360ms; }
-@media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
-}
+/* Scroll reveal removed — elements render statically. Stale "reveal"
+   class attributes in the HTML are intentionally inert no-ops. */
 
 /* ---------- Timeline / step list ---------- */
 .step-item {
@@ -366,10 +254,6 @@ a.text-warning, .text-warning {
   background: linear-gradient(180deg, var(--v-orange-1), var(--v-orange-2));
   z-index: -1;
   transform-origin: top center;
-  clip-path: inset(0 0 100% 0);
-  transition: clip-path 0.9s cubic-bezier(0.25, 1, 0.5, 1);
-}
-.step-item.reveal-visible .step-line {
   clip-path: inset(0 0 0 0);
 }
 
